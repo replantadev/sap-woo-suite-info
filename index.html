@@ -7,542 +7,609 @@
     <meta name="description" content="Conecta WooCommerce y canales de venta (TikTok Shop, Amazon, Miravia) con SAP Business One via Service Layer. Plugin WordPress profesional por Replanta.">
     <meta name="author" content="Replanta">
     <link rel="icon" href="https://replanta.net/wp-content/uploads/2025/12/icono.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons (lightweight SVG icon set) -->
+    <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js" defer></script>
+
     <style>
-        :root {
-            --bg: #0d1117;
-            --bg-card: #161b22;
-            --bg-card-hover: #1c2333;
-            --border: #30363d;
-            --text: #e6edf3;
-            --text-muted: #8b949e;
-            --accent: #58a6ff;
-            --accent-hover: #79b8ff;
-            --green: #3fb950;
-            --purple: #bc8cff;
-            --orange: #f0883e;
-            --red: #f85149;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-        }
-        a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
-        a:hover { color: var(--accent-hover); }
+    :root {
+      --rep-green:#93F1C9;
+      --rep-forest:#1E2F23;
+      --rep-teal:#41999F;
+      --rep-sun:#F7D450;
+      --rep-mint:#92F1CB;
+      --rep-white:#FFFFFF;
+      --rep-bg-light:#F7FBF9;
+      --rep-text-secondary:#3B4B45;
+      --rep-text-tertiary:#547065;
+      --rep-text-muted:#6B7D76;
+      --rep-border:#E6F3EF;
+      --rep-grad:linear-gradient(135deg,#93F1C9 0%,#41999F 60%,#F7D450 100%);
+      --rep-shadow-sm:0 1px 2px 0 rgba(30,47,35,.05);
+      --rep-shadow-md:0 4px 6px -1px rgba(30,47,35,.10),0 2px 4px -1px rgba(30,47,35,.06);
+      --rep-shadow-lg:0 10px 15px -3px rgba(30,47,35,.10),0 4px 6px -2px rgba(30,47,35,.05);
+      --rep-font-display:'Fraunces',serif;
+      --rep-font-body:'DM Sans',system-ui,-apple-system,sans-serif;
+    }
 
-        /* Hero */
-        .hero {
-            text-align: center;
-            padding: 80px 20px 60px;
-            background: linear-gradient(180deg, #0d1117 0%, #161b22 100%);
-            border-bottom: 1px solid var(--border);
-        }
-        .hero-logo {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            background: #1a1a2e;
-            padding: 12px;
-            margin-bottom: 24px;
-        }
-        .hero h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            background: linear-gradient(135deg, var(--accent), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .hero .tagline {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 32px;
-        }
-        .badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 32px; }
-        .badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            border: 1px solid var(--border);
-        }
-        .badge-blue { background: rgba(88,166,255,0.15); color: var(--accent); border-color: rgba(88,166,255,0.3); }
-        .badge-purple { background: rgba(188,140,255,0.15); color: var(--purple); border-color: rgba(188,140,255,0.3); }
-        .badge-orange { background: rgba(240,136,62,0.15); color: var(--orange); border-color: rgba(240,136,62,0.3); }
-        .badge-green { background: rgba(63,185,80,0.15); color: var(--green); border-color: rgba(63,185,80,0.3); }
-        .cta-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 28px;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: all 0.2s;
-            border: 1px solid transparent;
-        }
-        .btn-primary {
-            background: var(--accent);
-            color: #0d1117;
-        }
-        .btn-primary:hover { background: var(--accent-hover); color: #0d1117; transform: translateY(-1px); }
-        .btn-secondary {
-            background: transparent;
-            color: var(--text);
-            border-color: var(--border);
-        }
-        .btn-secondary:hover { border-color: var(--text-muted); transform: translateY(-1px); }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--rep-font-body);color:var(--rep-text-secondary);line-height:1.6;background:var(--rep-white);-webkit-font-smoothing:antialiased}
+    a{color:var(--rep-teal);text-decoration:none;transition:color .2s}
+    a:hover{color:#368f95}
+    img{max-width:100%;height:auto}
+    .container{max-width:1120px;margin:0 auto;padding:0 20px}
 
-        /* Container */
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    /* ===== Nav ===== */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--rep-border);transition:box-shadow .3s}
+    .nav.scrolled{box-shadow:var(--rep-shadow-md)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .nav-brand{display:flex;align-items:center;gap:10px;font-family:var(--rep-font-display);font-weight:600;font-size:1.1rem;color:var(--rep-forest)}
+    .nav-brand img{width:32px;height:32px;border-radius:50%}
+    .nav-links{display:flex;align-items:center;gap:24px}
+    .nav-links a{font-size:.9rem;font-weight:500;color:var(--rep-text-tertiary)}
+    .nav-links a:hover{color:var(--rep-teal)}
+    .nav-cta{background:var(--rep-teal);color:var(--rep-white)!important;padding:8px 20px;border-radius:10px;font-weight:500;transition:all .3s}
+    .nav-cta:hover{background:#368f95;color:var(--rep-white)!important;transform:translateY(-1px)}
+    @media(max-width:640px){.nav-links a:not(.nav-cta){display:none}}
 
-        /* Section */
-        .section { padding: 80px 0; }
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 12px;
-        }
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-bottom: 48px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+    /* ===== Buttons ===== */
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-family:var(--rep-font-body);font-size:1rem;font-weight:500;transition:all .3s;border:none;cursor:pointer;text-decoration:none}
+    .btn-primary{background:var(--rep-teal);color:var(--rep-white)}
+    .btn-primary:hover{background:#368f95;color:var(--rep-white);transform:translateY(-2px);box-shadow:var(--rep-shadow-md)}
+    .btn-accent{background:var(--rep-sun);color:var(--rep-forest)}
+    .btn-accent:hover{background:#f5cc3d;color:var(--rep-forest);transform:translateY(-2px)}
+    .btn-secondary{background:transparent;color:var(--rep-teal);border:1px solid var(--rep-teal)}
+    .btn-secondary:hover{background:var(--rep-teal);color:var(--rep-white)}
 
-        /* Feature Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-        }
-        .feature-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 28px;
-            transition: all 0.2s;
-        }
-        .feature-card:hover {
-            background: var(--bg-card-hover);
-            border-color: var(--text-muted);
-            transform: translateY(-2px);
-        }
-        .feature-icon {
-            font-size: 1.8rem;
-            margin-bottom: 12px;
-        }
-        .feature-card h3 {
-            font-size: 1.15rem;
-            margin-bottom: 8px;
-        }
-        .feature-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
+    /* ===== Chips ===== */
+    .chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;font-size:.8rem;font-weight:500;border:1px solid var(--rep-border);background:var(--rep-bg-light);color:var(--rep-text-secondary)}
+    .chip--teal{background:rgba(65,153,159,.08);border-color:rgba(65,153,159,.25);color:var(--rep-teal)}
+    .chip--green{background:rgba(146,241,203,.12);border-color:rgba(146,241,203,.30);color:var(--rep-forest)}
+    .chip--sun{background:rgba(247,212,80,.12);border-color:rgba(247,212,80,.30);color:#6C5E1A}
 
-        /* Modes */
-        .modes {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        @media (max-width: 600px) { .modes { grid-template-columns: 1fr; } }
-        .mode-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 32px;
-            text-align: center;
-        }
-        .mode-card h3 { font-size: 1.4rem; margin-bottom: 8px; }
-        .mode-card .mode-tag {
-            display: inline-block;
-            padding: 2px 10px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .mode-card p { color: var(--text-muted); font-size: 0.95rem; }
+    /* ===== Hero ===== */
+    .hero{padding:120px 20px 80px;text-align:center;background:linear-gradient(180deg,var(--rep-bg-light) 0%,var(--rep-white) 100%);position:relative;overflow:hidden}
+    .hero::before{content:"";position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(147,241,201,.15) 0%,transparent 70%);pointer-events:none}
+    .hero-logo{width:72px;height:72px;border-radius:50%;margin:0 auto 28px;display:block;position:relative;z-index:1}
+    .hero h1{font-family:var(--rep-font-display);font-size:3.5rem;font-weight:700;line-height:1.15;color:var(--rep-forest);margin-bottom:16px;position:relative;z-index:1}
+    .hero h1 span{background:var(--rep-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero .tagline{font-size:1.2rem;color:var(--rep-text-tertiary);max-width:580px;margin:0 auto 28px;line-height:1.7;position:relative;z-index:1}
+    .hero-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:36px;position:relative;z-index:1}
+    .hero-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;position:relative;z-index:1}
+    @media(max-width:768px){.hero h1{font-size:2.5rem} .hero{padding:100px 20px 60px}}
 
-        /* Flow diagram */
-        .flow-section { background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-        .flow-diagram {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 32px;
-            flex-wrap: wrap;
-            padding: 20px 0;
-        }
-        .flow-box {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 24px 32px;
-            min-width: 200px;
-            text-align: center;
-        }
-        .flow-box h4 { font-size: 1.1rem; margin-bottom: 8px; }
-        .flow-box ul { list-style: none; text-align: left; }
-        .flow-box ul li { color: var(--text-muted); font-size: 0.9rem; padding: 3px 0; }
-        .flow-box ul li::before { content: '→ '; color: var(--accent); }
-        .flow-arrow { font-size: 2rem; color: var(--accent); }
-        @media (max-width: 768px) { .flow-arrow { transform: rotate(90deg); } }
+    /* ===== Section base ===== */
+    .section{padding:80px 0}
+    .section-header{text-align:center;max-width:640px;margin:0 auto 48px}
+    .section-label{font-family:var(--rep-font-body);font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--rep-teal);margin-bottom:8px}
+    .section-title{font-family:var(--rep-font-display);font-size:2.25rem;font-weight:600;line-height:1.3;color:var(--rep-forest);margin-bottom:12px}
+    .section-subtitle{color:var(--rep-text-tertiary);font-size:1.05rem;line-height:1.7}
+    @media(max-width:768px){.section-title{font-size:1.75rem}}
 
-        /* Requirements */
-        .req-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        @media (max-width: 600px) { .req-grid { grid-template-columns: 1fr; } }
-        .req-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 24px;
-        }
-        .req-card h3 { font-size: 1.1rem; margin-bottom: 12px; }
-        .req-card ul { list-style: none; }
-        .req-card ul li {
-            padding: 4px 0;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-        .req-card ul li::before { content: '✓ '; color: var(--green); font-weight: bold; }
+    /* ===== Edge separator ===== */
+    .rep-edge-css{position:relative;height:64px;margin-top:-1px}
+    .rep-edge-css::before{content:"";position:absolute;inset:0;background:currentColor;clip-path:polygon(0 25%,12% 40%,28% 30%,45% 48%,62% 34%,78% 46%,90% 40%,100% 48%,100% 100%,0 100%)}
 
-        /* Addons */
-        .addon-section { background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-        .addons-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 16px;
-            max-width: 700px;
-            margin: 0 auto 32px;
-        }
-        .addon-pill {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.2s;
-        }
-        .addon-pill:hover { border-color: var(--accent); transform: translateY(-2px); }
-        .addon-pill .addon-icon { font-size: 2rem; margin-bottom: 8px; }
-        .addon-pill .addon-name { font-weight: 600; font-size: 0.95rem; }
-        .addon-pill .addon-status {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 4px;
-        }
-        .addon-pill .addon-status.ready { color: var(--green); }
+    /* ===== Pain / Promise ===== */
+    .pain{background:var(--rep-bg-light);padding:80px 0}
+    .promise-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+    .promise-grid .text h2{font-family:var(--rep-font-display);font-size:2rem;font-weight:600;color:var(--rep-forest);margin-bottom:16px;line-height:1.3}
+    .promise-grid .text p{color:var(--rep-text-tertiary);font-size:1.05rem;line-height:1.7;margin-bottom:24px}
+    .promise-list{list-style:none}
+    .promise-list li{display:flex;align-items:flex-start;gap:12px;padding:10px 0;color:var(--rep-text-secondary)}
+    .promise-list li .icon-wrap{flex-shrink:0;width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(65,153,159,.08);color:var(--rep-teal)}
+    .promise-visual{display:flex;flex-direction:column;gap:16px}
+    .stat-card{background:var(--rep-white);border:1px solid var(--rep-border);border-radius:16px;padding:24px;box-shadow:var(--rep-shadow-sm);display:flex;align-items:center;gap:16px}
+    .stat-card .stat-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .stat-card .stat-num{font-family:var(--rep-font-display);font-size:1.8rem;font-weight:700;color:var(--rep-forest);line-height:1}
+    .stat-card .stat-label{font-size:.85rem;color:var(--rep-text-muted);margin-top:2px}
+    @media(max-width:860px){.promise-grid{grid-template-columns:1fr} .promise-visual{order:-1}}
 
-        /* Hooks table */
-        .hooks-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 24px;
-            font-size: 0.9rem;
-        }
-        .hooks-table th {
-            text-align: left;
-            padding: 10px 12px;
-            border-bottom: 2px solid var(--border);
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .hooks-table td {
-            padding: 10px 12px;
-            border-bottom: 1px solid var(--border);
-        }
-        .hooks-table code {
-            background: rgba(88,166,255,0.1);
-            color: var(--accent);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-        }
-        .hooks-table .type-badge {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-        .type-action { background: rgba(63,185,80,0.15); color: var(--green); }
-        .type-filter { background: rgba(188,140,255,0.15); color: var(--purple); }
+    /* ===== Features ===== */
+    .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .feature-card{background:var(--rep-white);border:1px solid var(--rep-border);border-radius:16px;padding:28px;box-shadow:var(--rep-shadow-sm);transition:all .3s}
+    .feature-card:hover{box-shadow:var(--rep-shadow-lg);transform:translateY(-4px)}
+    .feature-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+    .feature-icon svg{width:22px;height:22px}
+    .feature-icon--teal{background:rgba(65,153,159,.1);color:var(--rep-teal)}
+    .feature-icon--green{background:rgba(146,241,203,.2);color:var(--rep-forest)}
+    .feature-icon--sun{background:rgba(247,212,80,.18);color:#8B7821}
+    .feature-card h3{font-family:var(--rep-font-display);font-size:1.15rem;font-weight:600;color:var(--rep-forest);margin-bottom:8px}
+    .feature-card p{color:var(--rep-text-tertiary);font-size:.92rem;line-height:1.6}
+    @media(max-width:1024px){.features-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.features-grid{grid-template-columns:1fr}}
 
-        /* CTA */
-        .cta-section {
-            text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(180deg, var(--bg) 0%, #161b22 100%);
-        }
-        .cta-section h2 { font-size: 2rem; margin-bottom: 12px; }
-        .cta-section p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 32px; }
+    /* ===== Modes ===== */
+    .modes-section{background:var(--rep-bg-light)}
+    .modes-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:800px;margin:0 auto}
+    .mode-card{background:var(--rep-white);border:1px solid var(--rep-border);border-radius:16px;padding:36px 28px;text-align:center;box-shadow:var(--rep-shadow-sm);transition:all .3s;position:relative;overflow:hidden}
+    .mode-card:hover{box-shadow:var(--rep-shadow-lg);transform:translateY(-3px)}
+    .mode-card::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px}
+    .mode-card--b2c::after{background:var(--rep-teal)}
+    .mode-card--b2b::after{background:var(--rep-sun)}
+    .mode-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+    .mode-icon svg{width:26px;height:26px}
+    .mode-icon--teal{background:rgba(65,153,159,.1);color:var(--rep-teal)}
+    .mode-icon--sun{background:rgba(247,212,80,.18);color:#8B7821}
+    .mode-card h3{font-family:var(--rep-font-display);font-size:1.35rem;font-weight:600;color:var(--rep-forest);margin-bottom:8px}
+    .mode-card p{color:var(--rep-text-tertiary);font-size:.95rem}
+    @media(max-width:640px){.modes-grid{grid-template-columns:1fr}}
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 32px 20px;
-            border-top: 1px solid var(--border);
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-        footer a { color: var(--text-muted); }
-        footer a:hover { color: var(--text); }
+    /* ===== Flow ===== */
+    .flow-section{padding:80px 0;position:relative}
+    .flow-wrap{display:flex;align-items:stretch;justify-content:center;gap:0;max-width:900px;margin:0 auto}
+    .flow-col{flex:1;background:var(--rep-white);border:1px solid var(--rep-border);border-radius:16px;padding:28px;box-shadow:var(--rep-shadow-sm)}
+    .flow-col h4{font-family:var(--rep-font-display);font-size:1.1rem;font-weight:600;color:var(--rep-forest);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .flow-col h4 svg{width:20px;height:20px;color:var(--rep-teal)}
+    .flow-items{list-style:none}
+    .flow-items li{padding:6px 0;padding-left:16px;position:relative;color:var(--rep-text-secondary);font-size:.9rem}
+    .flow-items li::before{content:"";position:absolute;left:0;top:13px;width:7px;height:7px;border-radius:2px;background:var(--rep-sun)}
+    .flow-center{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 20px;flex-shrink:0}
+    .flow-arrow-line{width:2px;flex:1;background:var(--rep-border)}
+    .flow-arrow-icon{width:44px;height:44px;border-radius:50%;background:var(--rep-teal);color:var(--rep-white);display:flex;align-items:center;justify-content:center;margin:8px 0;box-shadow:var(--rep-shadow-md)}
+    .flow-arrow-icon svg{width:20px;height:20px}
+    .flow-addons{text-align:center;margin-top:28px;padding:20px;background:var(--rep-bg-light);border-radius:14px;border:1px dashed var(--rep-border)}
+    .flow-addons p{color:var(--rep-text-muted);font-size:.9rem}
+    .flow-addons strong{color:var(--rep-teal)}
+    @media(max-width:700px){.flow-wrap{flex-direction:column;gap:0} .flow-center{flex-direction:row;padding:12px 0} .flow-arrow-line{width:auto;height:2px;flex:1}}
+
+    /* ===== Channels ===== */
+    .channels-section{background:var(--rep-bg-light)}
+    .channels-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:720px;margin:0 auto 28px}
+    .channel-card{background:var(--rep-white);border:1px solid var(--rep-border);border-radius:14px;padding:24px 16px;text-align:center;box-shadow:var(--rep-shadow-sm);transition:all .3s}
+    .channel-card:hover{box-shadow:var(--rep-shadow-lg);transform:translateY(-3px)}
+    .channel-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+    .channel-icon svg{width:24px;height:24px}
+    .channel-icon--woo{background:rgba(65,153,159,.1);color:var(--rep-teal)}
+    .channel-icon--tiktok{background:rgba(30,47,35,.06);color:var(--rep-forest)}
+    .channel-icon--amazon{background:rgba(247,212,80,.15);color:#8B7821}
+    .channel-icon--miravia{background:rgba(146,241,203,.15);color:var(--rep-forest)}
+    .channel-name{font-weight:600;font-size:.9rem;color:var(--rep-forest);margin-bottom:4px}
+    .channel-status{font-size:.75rem;color:var(--rep-text-muted)}
+    .channel-status--active{color:var(--rep-teal);font-weight:600}
+    .channels-note{text-align:center;color:var(--rep-text-muted);font-size:.9rem}
+    .channels-note strong{color:var(--rep-teal)}
+    @media(max-width:600px){.channels-grid{grid-template-columns:1fr 1fr}}
+
+    /* ===== Requirements ===== */
+    .req-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:800px;margin:0 auto}
+    .req-card{background:var(--rep-white);border:1px solid var(--rep-border);border-radius:16px;padding:28px;box-shadow:var(--rep-shadow-sm)}
+    .req-card h3{font-family:var(--rep-font-display);font-size:1.1rem;font-weight:600;color:var(--rep-forest);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .req-card h3 svg{width:18px;height:18px;color:var(--rep-teal)}
+    .req-list{list-style:none}
+    .req-list li{display:flex;align-items:center;gap:8px;padding:5px 0;color:var(--rep-text-secondary);font-size:.9rem}
+    .req-list li svg{width:16px;height:16px;color:var(--rep-teal);flex-shrink:0}
+    @media(max-width:600px){.req-grid{grid-template-columns:1fr}}
+
+    /* ===== Hooks ===== */
+    .hooks-section{background:var(--rep-bg-light)}
+    .hooks-table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--rep-border);border-radius:14px;overflow:hidden;background:var(--rep-white);font-size:.88rem}
+    .hooks-table thead th{background:var(--rep-white);border-bottom:2px solid var(--rep-border);padding:12px 14px;text-align:left;font-weight:600;color:var(--rep-forest);font-size:.8rem;text-transform:uppercase;letter-spacing:.5px}
+    .hooks-table td{padding:10px 14px;border-bottom:1px solid var(--rep-border);vertical-align:middle}
+    .hooks-table tr:last-child td{border-bottom:none}
+    .hooks-table code{background:rgba(65,153,159,.06);color:var(--rep-teal);padding:3px 8px;border-radius:6px;font-size:.82rem;font-weight:500}
+    .type-badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:.72rem;font-weight:600}
+    .type-action{background:rgba(146,241,203,.15);color:var(--rep-forest)}
+    .type-filter{background:rgba(65,153,159,.1);color:var(--rep-teal)}
+
+    /* ===== CTA ===== */
+    .cta-section{text-align:center;padding:100px 20px;background:var(--rep-forest);color:var(--rep-white);position:relative;overflow:hidden}
+    .cta-section::before{content:"";position:absolute;top:-150px;right:-150px;width:500px;height:500px;background:radial-gradient(circle,rgba(147,241,201,.1) 0%,transparent 70%);pointer-events:none}
+    .cta-section h2{font-family:var(--rep-font-display);font-size:2.25rem;font-weight:600;margin-bottom:14px;position:relative}
+    .cta-section p{color:rgba(255,255,255,.65);font-size:1.1rem;margin-bottom:36px;max-width:500px;margin-left:auto;margin-right:auto;position:relative}
+    .cta-buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;position:relative}
+
+    /* ===== Footer ===== */
+    footer{text-align:center;padding:36px 20px;border-top:1px solid var(--rep-border);color:var(--rep-text-muted);font-size:.83rem}
+    footer a{color:var(--rep-text-muted)}
+    footer a:hover{color:var(--rep-teal)}
+
+    /* ===== Animate on scroll (simple) ===== */
+    .fade-up{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+    .fade-up.visible{opacity:1;transform:none}
     </style>
 </head>
 <body>
 
+<!-- Nav -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="nav-brand">
+      <img src="https://replanta.net/wp-content/uploads/2025/12/icono.png" alt="Replanta">
+      SAP Woo Suite
+    </a>
+    <div class="nav-links">
+      <a href="#funcionalidades">Funcionalidades</a>
+      <a href="#canales">Canales</a>
+      <a href="#developers">Developers</a>
+      <a href="https://replanta.net/contacto" class="nav-cta">Solicitar demo</a>
+    </div>
+  </div>
+</nav>
+
 <!-- Hero -->
 <section class="hero">
-    <img src="https://replanta.net/wp-content/uploads/2025/12/icono.png" alt="Replanta" class="hero-logo">
-    <h1>SAP Woo Suite</h1>
-    <p class="tagline">Plataforma multicanal que conecta WooCommerce y canales de venta con SAP Business One via Service Layer</p>
-    <div class="badges">
-        <span class="badge badge-blue">v2.0.0</span>
-        <span class="badge badge-purple">WooCommerce 6.0+</span>
-        <span class="badge badge-orange">SAP B1 9.3 | 10.0</span>
-        <span class="badge badge-green">HPOS Compatible</span>
+  <img src="https://replanta.net/wp-content/uploads/2025/12/icono.png" alt="SAP Woo Suite" class="hero-logo">
+  <h1>Tu tienda y SAP,<br><span>por fin conectados</span></h1>
+  <p class="tagline">SAP Woo Suite sincroniza WooCommerce con SAP Business One via Service Layer. Pedidos, stock, precios y clientes &mdash; todo automatizado, todo centralizado.</p>
+  <div class="hero-chips">
+    <span class="chip chip--teal">v2.0.0</span>
+    <span class="chip chip--green">HPOS compatible</span>
+    <span class="chip chip--sun">Multicanal</span>
+    <span class="chip">WooCommerce 6.0 &ndash; 9.x</span>
+    <span class="chip">SAP B1 9.3 | 10.0</span>
+  </div>
+  <div class="hero-ctas">
+    <a href="https://replanta.net/contacto" class="btn btn-primary">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Solicitar demo
+    </a>
+    <a href="https://github.com/replantadev/sap-woo-suite-info" class="btn btn-secondary">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      Ver especificaciones
+    </a>
+  </div>
+</section>
+
+<!-- Edge -->
+<div class="rep-edge-css" style="color:var(--rep-bg-light)"></div>
+
+<!-- Pain → Promise -->
+<section class="pain">
+  <div class="container">
+    <div class="promise-grid">
+      <div class="text">
+        <h2>Deja de copiar datos<br>entre WooCommerce y SAP</h2>
+        <p>Cada pedido manual es un error potencial. Cada precio desactualizado es una venta perdida. SAP Woo Suite elimina la fricción entre tu tienda online y tu ERP.</p>
+        <ul class="promise-list">
+          <li>
+            <span class="icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span>
+            <span><strong>Pedidos automáticos</strong> &mdash; cada venta en WooCommerce crea un documento en SAP al instante</span>
+          </li>
+          <li>
+            <span class="icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span>
+            <span><strong>Stock real</strong> &mdash; los niveles de inventario se actualizan desde SAP por almacén</span>
+          </li>
+          <li>
+            <span class="icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span>
+            <span><strong>Precios centralizados</strong> &mdash; tarifas por región sincronizadas sin intervención</span>
+          </li>
+          <li>
+            <span class="icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span>
+            <span><strong>Multicanal desde v2.0</strong> &mdash; un plugin, todos tus canales, un solo ERP</span>
+          </li>
+        </ul>
+      </div>
+      <div class="promise-visual fade-up">
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(65,153,159,.1)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--rep-teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          </div>
+          <div><div class="stat-num">100%</div><div class="stat-label">Sincronización automática</div></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(247,212,80,.15)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8B7821" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div><div class="stat-num">HPOS</div><div class="stat-label">Compatible con WC 9.x</div></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(146,241,203,.15)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--rep-forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div><div class="stat-num">11</div><div class="stat-label">Hooks de extensión</div></div>
+        </div>
+      </div>
     </div>
-    <div class="cta-buttons">
-        <a href="mailto:info@replanta.net?subject=SAP%20Woo%20Suite%20-%20Solicitud%20de%20información" class="btn btn-primary">
-            Solicitar demo
-        </a>
-        <a href="https://github.com/replantadev/sap-woo-suite-info" class="btn btn-secondary">
-            Ver especificaciones
-        </a>
-    </div>
+  </div>
 </section>
 
 <!-- Features -->
-<section class="section">
-    <div class="container">
-        <h2 class="section-title">Todo lo que necesitas</h2>
-        <p class="section-subtitle">Un plugin que cubre la sincronización completa entre tu tienda online y SAP Business One</p>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">📦</div>
-                <h3>Pedidos → SAP</h3>
-                <p>Envío automático o manual de pedidos WooCommerce a SAP. Asignación inteligente de cliente por región, mapeo de direcciones y gastos de envío.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📊</div>
-                <h3>Stock y Precios ← SAP</h3>
-                <p>Sincronización de stock por almacén y tarifas de precios por región. Programable con toggles independientes.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🏷️</div>
-                <h3>Catálogo ← SAP</h3>
-                <p>Importación masiva de productos, categorías y clientes (B2B) desde SAP. Importación selectiva con preview de campos.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">👥</div>
-                <h3>Clientes B2B</h3>
-                <p>Sincronización automática de socios de negocio. Email de bienvenida, mapeo flexible de CardCode, cron diario.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🔌</div>
-                <h3>Multicanal (v2.0)</h3>
-                <p>Arquitectura extensible con Channel Manager. Conecta TikTok Shop, Amazon, Miravia y cualquier canal mediante addons.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📋</div>
-                <h3>Logs y Diagnóstico</h3>
-                <p>Registro detallado de operaciones, panel de pedidos fallidos con reintento y vista directa de pedidos SAP.</p>
-            </div>
-        </div>
+<section class="section" id="funcionalidades">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Funcionalidades</div>
+      <h2 class="section-title">Todo lo que necesitas, nada que sobre</h2>
+      <p class="section-subtitle">Cada funcionalidad resuelve un problema real de empresas que trabajan con SAP Business One y WooCommerce.</p>
     </div>
+    <div class="features-grid">
+      <div class="feature-card fade-up">
+        <div class="feature-icon feature-icon--teal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <h3>Pedidos a SAP</h3>
+        <p>Envío automático o manual. Asignación inteligente de cliente por región, gastos de envío, notas enriquecidas y panel de reintentos para pedidos fallidos.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon feature-icon--green">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>Stock y precios</h3>
+        <p>Importa stock por almacén y precios por tarifa regional. Programable con toggles independientes para cada tipo de sincronización.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon feature-icon--sun">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </div>
+        <h3>Catálogo completo</h3>
+        <p>Importa productos, categorías y clientes B2B por lotes desde SAP. Preview de campos antes de importar y barra de progreso en tiempo real.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon feature-icon--teal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Clientes B2B</h3>
+        <p>Sincronización automática diaria de socios de negocio. Email de bienvenida con acceso al portal. Cada usuario = un CardCode en SAP.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon feature-icon--green">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <h3>Multicanal v2.0</h3>
+        <p>Channel Manager extensible. Conecta TikTok Shop, Amazon, Miravia o cualquier marketplace mediante addons independientes.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon feature-icon--sun">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>Logs y diagnóstico</h3>
+        <p>Registro detallado de cada operación. Panel de pedidos fallidos con reintento y vista directa de documentos SAP desde WordPress.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- Edge -->
+<div class="rep-edge-css" style="color:var(--rep-bg-light)"></div>
+
 <!-- Modes -->
-<section class="section" style="padding-top: 0;">
-    <div class="container">
-        <h2 class="section-title">Dos modos, un plugin</h2>
-        <p class="section-subtitle">Configura el modo que se adapte a tu modelo de negocio</p>
-        <div class="modes">
-            <div class="mode-card">
-                <span class="mode-tag badge badge-blue">B2C</span>
-                <h3>Ecommerce</h3>
-                <p>Clientes genéricos por región geográfica. Ideal para tiendas online abiertas al público general.</p>
-            </div>
-            <div class="mode-card">
-                <span class="mode-tag badge badge-purple">B2B</span>
-                <h3>Mayorista</h3>
-                <p>Cada usuario = un CardCode en SAP. Precios personalizados, portal exclusivo para distribuidores.</p>
-            </div>
-        </div>
+<section class="section modes-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Modos de operación</div>
+      <h2 class="section-title">Un plugin, dos formas de vender</h2>
+      <p class="section-subtitle">Elige el modo que encaja con tu modelo de negocio. Cambia en cualquier momento.</p>
     </div>
+    <div class="modes-grid">
+      <div class="mode-card mode-card--b2c fade-up">
+        <div class="mode-icon mode-icon--teal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        </div>
+        <span class="chip chip--teal" style="margin-bottom:12px">B2C</span>
+        <h3>Ecommerce</h3>
+        <p>Clientes genéricos por región geográfica. Pensado para tiendas abiertas al público con pedidos de consumidor final.</p>
+      </div>
+      <div class="mode-card mode-card--b2b fade-up">
+        <div class="mode-icon mode-icon--sun">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <span class="chip chip--sun" style="margin-bottom:12px">B2B</span>
+        <h3>Mayorista</h3>
+        <p>Cada usuario WooCommerce = un CardCode en SAP. Precios personalizados por tarifa, portal de distribuidores.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Flow -->
-<section class="section flow-section">
-    <div class="container">
-        <h2 class="section-title">Flujo de sincronización</h2>
-        <p class="section-subtitle">Comunicación bidireccional y centralizada en SAP B1</p>
-        <div class="flow-diagram">
-            <div class="flow-box">
-                <h4>WooCommerce</h4>
-                <ul>
-                    <li>Pedidos nuevos</li>
-                    <li>Stock actualizado</li>
-                    <li>Productos importados</li>
-                    <li>Clientes B2B</li>
-                </ul>
-            </div>
-            <div class="flow-arrow">⇄</div>
-            <div class="flow-box">
-                <h4>SAP Business One</h4>
-                <ul>
-                    <li>Orders (DocEntry)</li>
-                    <li>Items / Prices</li>
-                    <li>ItemGroups</li>
-                    <li>BusinessPartners</li>
-                </ul>
-            </div>
-        </div>
-        <div style="text-align: center; margin-top: 24px;">
-            <p style="color: var(--text-muted); font-size: 0.95rem;">+ canales adicionales via <strong style="color: var(--accent);">addons</strong>: TikTok Shop, Amazon, Miravia...</p>
-        </div>
+<section class="flow-section" id="flujo">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Arquitectura</div>
+      <h2 class="section-title">Flujo de sincronización</h2>
+      <p class="section-subtitle">Comunicación bidireccional y en tiempo real entre tu tienda y SAP B1.</p>
     </div>
+    <div class="flow-wrap fade-up">
+      <div class="flow-col">
+        <h4>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          WooCommerce
+        </h4>
+        <ul class="flow-items">
+          <li>Pedidos nuevos</li>
+          <li>Stock actualizado</li>
+          <li>Productos importados</li>
+          <li>Categorías sincronizadas</li>
+          <li>Clientes B2B</li>
+        </ul>
+      </div>
+      <div class="flow-center">
+        <div class="flow-arrow-line"></div>
+        <div class="flow-arrow-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+        </div>
+        <div class="flow-arrow-line"></div>
+      </div>
+      <div class="flow-col">
+        <h4>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          SAP Business One
+        </h4>
+        <ul class="flow-items">
+          <li>Orders (DocEntry)</li>
+          <li>Items &amp; Prices</li>
+          <li>ItemGroups</li>
+          <li>BusinessPartners</li>
+          <li>Warehouses</li>
+        </ul>
+      </div>
+    </div>
+    <div class="flow-addons fade-up">
+      <p>Canales adicionales mediante <strong>addons</strong>: TikTok Shop, Amazon, Miravia&hellip; cada canal se conecta al mismo flujo.</p>
+    </div>
+  </div>
 </section>
 
-<!-- Addons -->
-<section class="section addon-section">
-    <div class="container">
-        <h2 class="section-title">Ecosistema de Addons</h2>
-        <p class="section-subtitle">Conecta nuevos canales de venta sin modificar el core</p>
-        <div class="addons-grid">
-            <div class="addon-pill">
-                <div class="addon-icon">🛒</div>
-                <div class="addon-name">WooCommerce</div>
-                <div class="addon-status ready">Incluido en core</div>
-            </div>
-            <div class="addon-pill">
-                <div class="addon-icon">🎵</div>
-                <div class="addon-name">TikTok Shop</div>
-                <div class="addon-status">Próximamente</div>
-            </div>
-            <div class="addon-pill">
-                <div class="addon-icon">📦</div>
-                <div class="addon-name">Amazon</div>
-                <div class="addon-status">Próximamente</div>
-            </div>
-            <div class="addon-pill">
-                <div class="addon-icon">🌟</div>
-                <div class="addon-name">Miravia</div>
-                <div class="addon-status">Próximamente</div>
-            </div>
-        </div>
-        <p style="text-align: center; color: var(--text-muted); font-size: 0.9rem;">
-            11 hooks de extensión disponibles · API documentada · Clase base para desarrollo rápido
-        </p>
+<!-- Edge -->
+<div class="rep-edge-css" style="color:var(--rep-bg-light)"></div>
+
+<!-- Channels -->
+<section class="section channels-section" id="canales">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Ecosistema</div>
+      <h2 class="section-title">Un plugin, muchos canales</h2>
+      <p class="section-subtitle">Conecta nuevos marketplaces sin modificar el core. Cada canal es un addon independiente.</p>
     </div>
+    <div class="channels-grid fade-up">
+      <div class="channel-card">
+        <div class="channel-icon channel-icon--woo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        </div>
+        <div class="channel-name">WooCommerce</div>
+        <div class="channel-status channel-status--active">Incluido en core</div>
+      </div>
+      <div class="channel-card">
+        <div class="channel-icon channel-icon--tiktok">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+        </div>
+        <div class="channel-name">TikTok Shop</div>
+        <div class="channel-status">Pronto</div>
+      </div>
+      <div class="channel-card">
+        <div class="channel-icon channel-icon--amazon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <div class="channel-name">Amazon</div>
+        <div class="channel-status">Pronto</div>
+      </div>
+      <div class="channel-card">
+        <div class="channel-icon channel-icon--miravia">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="channel-name">Miravia</div>
+        <div class="channel-status">Pronto</div>
+      </div>
+    </div>
+    <p class="channels-note">11 hooks de extensi&oacute;n &middot; API documentada &middot; Clase base para <strong>desarrollo r&aacute;pido de addons</strong></p>
+  </div>
 </section>
 
 <!-- Requirements -->
-<section class="section">
-    <div class="container">
-        <h2 class="section-title">Requisitos técnicos</h2>
-        <p class="section-subtitle">Compatible con las versiones más recientes</p>
-        <div class="req-grid">
-            <div class="req-card">
-                <h3>WordPress / WooCommerce</h3>
-                <ul>
-                    <li>WordPress 5.8+</li>
-                    <li>WooCommerce 6.0+ (hasta 9.x)</li>
-                    <li>PHP 7.4+ (recomendado 8.0+)</li>
-                    <li>Compatible con HPOS</li>
-                </ul>
-            </div>
-            <div class="req-card">
-                <h3>SAP Business One</h3>
-                <ul>
-                    <li>SAP B1 9.3 PL14+ o 10.0+</li>
-                    <li>Service Layer activo (HTTPS)</li>
-                    <li>Permisos en Orders, Items, BP</li>
-                    <li>UDFs opcionales para avanzado</li>
-                </ul>
-            </div>
-        </div>
+<section class="section" id="requisitos">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Compatibilidad</div>
+      <h2 class="section-title">Requisitos t&eacute;cnicos</h2>
+      <p class="section-subtitle">Compatible con las versiones m&aacute;s recientes del ecosistema WordPress y SAP.</p>
     </div>
+    <div class="req-grid fade-up">
+      <div class="req-card">
+        <h3>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+          WordPress / WooCommerce
+        </h3>
+        <ul class="req-list">
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> WordPress 5.8+</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> WooCommerce 6.0+ (hasta 9.x)</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> PHP 7.4+ (recomendado 8.0+)</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Compatible con HPOS</li>
+        </ul>
+      </div>
+      <div class="req-card">
+        <h3>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          SAP Business One
+        </h3>
+        <ul class="req-list">
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> SAP B1 9.3 PL14+ o 10.0+</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Service Layer activo (HTTPS)</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Permisos en Orders, Items, BP</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> UDFs opcionales para avanzado</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Hooks (for developers) -->
-<section class="section" style="padding-top: 0;">
-    <div class="container">
-        <h2 class="section-title">Para desarrolladores</h2>
-        <p class="section-subtitle">11 hooks de extensión para personalizar cada aspecto</p>
-        <div style="overflow-x: auto;">
-            <table class="hooks-table">
-                <thead>
-                    <tr>
-                        <th>Hook</th>
-                        <th>Tipo</th>
-                        <th>Descripción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td><code>sapwc_loaded</code></td><td><span class="type-badge type-action">action</span></td><td>Plugin cargado — registrar canales</td></tr>
-                    <tr><td><code>sapwc_order_payload</code></td><td><span class="type-badge type-filter">filter</span></td><td>Modificar payload antes de enviar a SAP</td></tr>
-                    <tr><td><code>sapwc_before_send_order</code></td><td><span class="type-badge type-action">action</span></td><td>Antes de enviar pedido</td></tr>
-                    <tr><td><code>sapwc_after_send_order</code></td><td><span class="type-badge type-action">action</span></td><td>Después de enviar pedido</td></tr>
-                    <tr><td><code>sapwc_before_save_product</code></td><td><span class="type-badge type-filter">filter</span></td><td>Modificar producto antes de guardar</td></tr>
-                    <tr><td><code>sapwc_after_import_product</code></td><td><span class="type-badge type-action">action</span></td><td>Después de importar producto</td></tr>
-                    <tr><td><code>sapwc_after_import_customer</code></td><td><span class="type-badge type-action">action</span></td><td>Después de importar cliente</td></tr>
-                    <tr><td><code>sapwc_documents_owner</code></td><td><span class="type-badge type-filter">filter</span></td><td>Personalizar DocumentsOwner</td></tr>
-                    <tr><td><code>sapwc_api_request_args</code></td><td><span class="type-badge type-filter">filter</span></td><td>Modificar petición a Service Layer</td></tr>
-                    <tr><td><code>sapwc_admin_menu</code></td><td><span class="type-badge type-action">action</span></td><td>Añadir submenús</td></tr>
-                    <tr><td><code>sapwc_channel_registered</code></td><td><span class="type-badge type-action">action</span></td><td>Canal registrado en Channel Manager</td></tr>
-                </tbody>
-            </table>
-        </div>
+<!-- Edge -->
+<div class="rep-edge-css" style="color:var(--rep-bg-light)"></div>
+
+<!-- Hooks (Developers) -->
+<section class="section hooks-section" id="developers">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Para desarrolladores</div>
+      <h2 class="section-title">11 hooks de extensi&oacute;n</h2>
+      <p class="section-subtitle">Personaliza cada aspecto de la sincronizaci&oacute;n sin tocar el core del plugin.</p>
     </div>
+    <div style="overflow-x:auto" class="fade-up">
+      <table class="hooks-table">
+        <thead>
+          <tr>
+            <th>Hook</th>
+            <th>Tipo</th>
+            <th>Descripci&oacute;n</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><code>sapwc_loaded</code></td><td><span class="type-badge type-action">action</span></td><td>Plugin cargado &mdash; registrar canales</td></tr>
+          <tr><td><code>sapwc_order_payload</code></td><td><span class="type-badge type-filter">filter</span></td><td>Modificar payload antes de enviar a SAP</td></tr>
+          <tr><td><code>sapwc_before_send_order</code></td><td><span class="type-badge type-action">action</span></td><td>Antes de enviar pedido</td></tr>
+          <tr><td><code>sapwc_after_send_order</code></td><td><span class="type-badge type-action">action</span></td><td>Despu&eacute;s de enviar pedido</td></tr>
+          <tr><td><code>sapwc_before_save_product</code></td><td><span class="type-badge type-filter">filter</span></td><td>Modificar producto antes de guardar</td></tr>
+          <tr><td><code>sapwc_after_import_product</code></td><td><span class="type-badge type-action">action</span></td><td>Despu&eacute;s de importar producto</td></tr>
+          <tr><td><code>sapwc_after_import_customer</code></td><td><span class="type-badge type-action">action</span></td><td>Despu&eacute;s de importar cliente</td></tr>
+          <tr><td><code>sapwc_documents_owner</code></td><td><span class="type-badge type-filter">filter</span></td><td>Personalizar DocumentsOwner</td></tr>
+          <tr><td><code>sapwc_api_request_args</code></td><td><span class="type-badge type-filter">filter</span></td><td>Modificar petici&oacute;n a Service Layer</td></tr>
+          <tr><td><code>sapwc_admin_menu</code></td><td><span class="type-badge type-action">action</span></td><td>A&ntilde;adir submen&uacute;s</td></tr>
+          <tr><td><code>sapwc_channel_registered</code></td><td><span class="type-badge type-action">action</span></td><td>Canal registrado en Channel Manager</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </section>
 
 <!-- CTA -->
 <section class="cta-section">
-    <h2>¿Listo para conectar tu tienda con SAP?</h2>
-    <p>Escríbenos para una demo personalizada o un presupuesto a medida.</p>
-    <div class="cta-buttons">
-        <a href="mailto:info@replanta.net?subject=SAP%20Woo%20Suite%20-%20Solicitud%20de%20demo" class="btn btn-primary">
-            Solicitar demo
-        </a>
-        <a href="https://replanta.net" class="btn btn-secondary">
-            Visitar replanta.net
-        </a>
-    </div>
+  <h2>No copies m&aacute;s datos a mano</h2>
+  <p>Hablemos de c&oacute;mo SAP Woo Suite puede automatizar tu operativa.</p>
+  <div class="cta-buttons">
+    <a href="https://replanta.net/contacto" class="btn btn-accent">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Solicitar demo
+    </a>
+    <a href="https://replanta.net" class="btn" style="background:transparent;color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.2)">
+      Visitar replanta.net
+    </a>
+  </div>
 </section>
 
 <!-- Footer -->
 <footer>
-    <p>SAP Woo Suite · Copyright &copy; 2024–2026 <a href="https://replanta.net">Replanta</a> · GPLv2+</p>
-    <p style="margin-top: 8px;">
-        <a href="https://replanta.net">Web</a> · 
-        <a href="mailto:info@replanta.net">info@replanta.net</a> · 
-        <a href="https://github.com/replantadev/sap-woo-suite-info">GitHub</a>
-    </p>
+  <p>SAP Woo Suite &middot; &copy; 2024&ndash;2026 <a href="https://replanta.net">Replanta</a> &middot; GPLv2+</p>
+  <p style="margin-top:6px">
+    <a href="https://replanta.net">Web</a> &middot;
+    <a href="mailto:info@replanta.net">info@replanta.net</a> &middot;
+    <a href="https://github.com/replantadev/sap-woo-suite-info">GitHub</a>
+  </p>
 </footer>
+
+<!-- Scroll animations & nav shadow -->
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  // Nav shadow on scroll
+  var nav=document.getElementById('nav');
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10)});
+
+  // Fade-up on scroll
+  var els=document.querySelectorAll('.fade-up');
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
+    },{threshold:0.15});
+    els.forEach(function(el){obs.observe(el)});
+  }else{
+    els.forEach(function(el){el.classList.add('visible')});
+  }
+});
+</script>
 
 </body>
 </html>
