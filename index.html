@@ -125,6 +125,26 @@
     @media(max-width:1024px){.features-grid{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:640px){.features-grid{grid-template-columns:1fr}}
 
+    /* ===== Dashboard Gallery ===== */
+    .dashboard-section{background:var(--rep-white)}
+    .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:28px}
+    .gallery-item{position:relative;border-radius:16px;overflow:hidden;cursor:pointer;border:1px solid var(--rep-border);box-shadow:var(--rep-shadow-sm);transition:transform .25s ease,box-shadow .25s ease;outline:none}
+    .gallery-item:hover,.gallery-item:focus-visible{transform:translateY(-4px);box-shadow:0 12px 32px rgba(30,47,35,.14)}
+    .gallery-item--wide{grid-column:1/-1}
+    .gallery-item img{display:block;width:100%;height:auto;object-fit:cover;transition:transform .35s ease}
+    .gallery-item:hover img{transform:scale(1.02)}
+    .gallery-caption{position:absolute;bottom:0;left:0;right:0;padding:14px 18px;background:linear-gradient(to top,rgba(15,32,23,.88) 0%,rgba(15,32,23,.45) 70%,transparent 100%);display:flex;flex-direction:column;gap:3px;pointer-events:none;opacity:0;transform:translateY(6px);transition:opacity .25s ease,transform .25s ease}
+    .gallery-item:hover .gallery-caption,.gallery-item:focus-visible .gallery-caption{opacity:1;transform:translateY(0)}
+    .gallery-caption strong{font:700 .95rem/1.2 var(--rep-body-font);color:#fff}
+    .gallery-caption span{font:400 .82rem/1.3 var(--rep-body-font);color:rgba(255,255,255,.75)}
+    .gallery-lightbox{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:rgba(15,32,23,.92);backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .3s ease}
+    .gallery-lightbox.is-active{opacity:1;pointer-events:auto}
+    .gallery-lightbox-close{position:absolute;top:18px;right:22px;font-size:2rem;line-height:1;color:#fff;background:none;border:none;cursor:pointer;opacity:.7;transition:opacity .2s}
+    .gallery-lightbox-close:hover{opacity:1}
+    .gallery-lightbox-img{max-width:92vw;max-height:88vh;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,.35);transform:scale(.92);transition:transform .3s ease}
+    .gallery-lightbox.is-active .gallery-lightbox-img{transform:scale(1)}
+    @media(max-width:640px){.gallery-grid{grid-template-columns:1fr}.gallery-item--wide{grid-column:auto}.gallery-caption{opacity:1;transform:translateY(0)}}
+
     /* ===== Modes ===== */
     .modes-section{background:var(--rep-bg-light)}
     .modes-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:800px;margin:0 auto}
@@ -239,7 +259,7 @@
   <h1>Tu tienda y SAP,<br><span>por fin conectados</span></h1>
   <p class="tagline">SAP Woo Suite sincroniza WooCommerce con SAP Business One via Service Layer. Pedidos, stock, precios y clientes &mdash; todo automatizado, todo centralizado.</p>
   <div class="hero-chips">
-    <span class="chip chip--teal">v2.2.0</span>
+    <span class="chip chip--teal">v2.11.0</span>
     <span class="chip chip--green">HPOS compatible</span>
     <span class="chip chip--sun">Multicanal</span>
     <span class="chip">WooCommerce 6.0 &ndash; 9.x</span>
@@ -362,6 +382,64 @@
         <p>Registro detallado de cada operación. Panel de pedidos fallidos con reintento y vista directa de documentos SAP desde WordPress.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Dashboard Gallery -->
+<section class="section dashboard-section" id="dashboard">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Dashboard</div>
+      <h2 class="section-title">As&iacute; se ve por dentro</h2>
+      <p class="section-subtitle">Capturas reales del panel de administraci&oacute;n. Sin maquetas, sin renders: esto es lo que ves cuando abres SAP Woo Suite en tu WordPress.</p>
+    </div>
+    <div class="gallery-grid fade-up">
+      <div class="gallery-item gallery-item--wide" tabindex="0">
+        <img src="https://replanta.net/wp-content/uploads/2026/03/dashboard3.0-1.webp"
+             alt="SAP Woo Suite - Dashboard principal" loading="lazy" width="960" height="540">
+        <div class="gallery-caption">
+          <strong>Dashboard principal</strong>
+          <span>Estado de conexi&oacute;n, sincronizaciones recientes y resumen de actividad</span>
+        </div>
+      </div>
+      <div class="gallery-item" tabindex="0">
+        <img src="https://replanta.net/wp-content/uploads/2026/03/dashboard3.0-2.webp"
+             alt="SAP Woo Suite - Pedidos" loading="lazy" width="960" height="540">
+        <div class="gallery-caption">
+          <strong>Pedidos</strong>
+          <span>Listado y estado de sincronizaci&oacute;n con SAP</span>
+        </div>
+      </div>
+      <div class="gallery-item" tabindex="0">
+        <img src="https://replanta.net/wp-content/uploads/2026/03/dashboard3.0-3.webp"
+             alt="SAP Woo Suite - Stock y precios" loading="lazy" width="960" height="540">
+        <div class="gallery-caption">
+          <strong>Stock y precios</strong>
+          <span>Control de importaci&oacute;n por almac&eacute;n y tarifa</span>
+        </div>
+      </div>
+      <div class="gallery-item" tabindex="0">
+        <img src="https://replanta.net/wp-content/uploads/2026/03/dashboard3.0-4.webp"
+             alt="SAP Woo Suite - Configuraci&oacute;n" loading="lazy" width="960" height="540">
+        <div class="gallery-caption">
+          <strong>Configuraci&oacute;n</strong>
+          <span>Ajustes de conexi&oacute;n, modos y canales</span>
+        </div>
+      </div>
+      <div class="gallery-item" tabindex="0">
+        <img src="https://replanta.net/wp-content/uploads/2026/03/dashboard3.0-5.webp"
+             alt="SAP Woo Suite - Logs y diagn&oacute;stico" loading="lazy" width="960" height="540">
+        <div class="gallery-caption">
+          <strong>Logs</strong>
+          <span>Registro detallado de cada operaci&oacute;n</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Lightbox -->
+  <div class="gallery-lightbox" id="gallery-lightbox">
+    <button class="gallery-lightbox-close" aria-label="Cerrar">&times;</button>
+    <img class="gallery-lightbox-img" id="gallery-lightbox-img" src="" alt="">
   </div>
 </section>
 
@@ -612,6 +690,36 @@ document.addEventListener('DOMContentLoaded',function(){
     els.forEach(function(el){el.classList.add('visible')});
   }
 });
+</script>
+
+<!-- Gallery lightbox -->
+<script>
+(function(){
+  var lb=document.getElementById('gallery-lightbox');
+  var lbImg=document.getElementById('gallery-lightbox-img');
+  if(!lb||!lbImg) return;
+  document.querySelectorAll('.gallery-item').forEach(function(item){
+    item.addEventListener('click',function(){
+      var img=this.querySelector('img');
+      if(!img) return;
+      lbImg.src=img.src;
+      lbImg.alt=img.alt;
+      lb.classList.add('is-active');
+      document.body.style.overflow='hidden';
+    });
+  });
+  lb.addEventListener('click',function(e){
+    if(e.target===lbImg) return;
+    lb.classList.remove('is-active');
+    document.body.style.overflow='';
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&lb.classList.contains('is-active')){
+      lb.classList.remove('is-active');
+      document.body.style.overflow='';
+    }
+  });
+})();
 </script>
 
 </body>
