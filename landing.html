@@ -325,6 +325,71 @@
     </div>
   </div>
 
+  <!-- GALERIA DASHBOARD -->
+  <div id="rep-plugins-dashboard" class="rep-plugins__dashboard rep-bg-light">
+    <div class="container">
+      <div class="rep-plugins__head rep-text-center">
+        <span class="rep-chip rep-chip--teal">Dashboard</span>
+        <h2 class="rep-heading-2 rep-text-forest">As&iacute; se ve por dentro</h2>
+        <p class="rep-text-body">Capturas reales del panel de administraci&oacute;n. Sin maquetas, sin renders: esto es lo que ves cuando abres SAP Woo Suite en tu WordPress.</p>
+      </div>
+
+      <div class="rep-plugins__galleryGrid">
+        <div class="rep-plugins__galleryItem rep-plugins__galleryItem--wide" tabindex="0">
+          <img src="https://replanta.net/wp-content/uploads/2026/03/dashboard3.0-1.webp"
+               alt="SAP Woo Suite - Dashboard principal con estado de sincronizaci&oacute;n"
+               loading="lazy" width="960" height="540">
+          <div class="rep-plugins__galleryCaption">
+            <span class="rep-plugins__galleryCaptionTitle">Dashboard principal</span>
+            <span class="rep-plugins__galleryCaptionDesc">Estado de conexi&oacute;n, sincronizaciones recientes y resumen de actividad</span>
+          </div>
+        </div>
+        <div class="rep-plugins__galleryItem" tabindex="0">
+          <img src="https://replanta.net/wp-content/uploads/2026/03/dashboard3.0-2.webp"
+               alt="SAP Woo Suite - Gesti&oacute;n de pedidos sincronizados"
+               loading="lazy" width="960" height="540">
+          <div class="rep-plugins__galleryCaption">
+            <span class="rep-plugins__galleryCaptionTitle">Pedidos</span>
+            <span class="rep-plugins__galleryCaptionDesc">Listado y estado de sincronizaci&oacute;n con SAP</span>
+          </div>
+        </div>
+        <div class="rep-plugins__galleryItem" tabindex="0">
+          <img src="https://replanta.net/wp-content/uploads/2026/03/dashboard3.0-3.webp"
+               alt="SAP Woo Suite - Sincronizaci&oacute;n de stock y precios"
+               loading="lazy" width="960" height="540">
+          <div class="rep-plugins__galleryCaption">
+            <span class="rep-plugins__galleryCaptionTitle">Stock y precios</span>
+            <span class="rep-plugins__galleryCaptionDesc">Control de importaci&oacute;n por almac&eacute;n y tarifa</span>
+          </div>
+        </div>
+        <div class="rep-plugins__galleryItem" tabindex="0">
+          <img src="https://replanta.net/wp-content/uploads/2026/03/dashboard3.0-4.webp"
+               alt="SAP Woo Suite - Configuraci&oacute;n y ajustes del plugin"
+               loading="lazy" width="960" height="540">
+          <div class="rep-plugins__galleryCaption">
+            <span class="rep-plugins__galleryCaptionTitle">Configuraci&oacute;n</span>
+            <span class="rep-plugins__galleryCaptionDesc">Ajustes de conexi&oacute;n, modos y canales</span>
+          </div>
+        </div>
+        <div class="rep-plugins__galleryItem" tabindex="0">
+          <img src="https://replanta.net/wp-content/uploads/2026/03/dashboard3.0-5.webp"
+               alt="SAP Woo Suite - Logs y diagn&oacute;stico de sincronizaciones"
+               loading="lazy" width="960" height="540">
+          <div class="rep-plugins__galleryCaption">
+            <span class="rep-plugins__galleryCaptionTitle">Logs</span>
+            <span class="rep-plugins__galleryCaptionDesc">Registro detallado de cada operaci&oacute;n</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lightbox overlay -->
+    <div class="rep-plugins__lightbox" id="rep-plugins-lightbox">
+      <button class="rep-plugins__lightboxClose" aria-label="Cerrar">&times;</button>
+      <img class="rep-plugins__lightboxImg" id="rep-plugins-lightbox-img" src="" alt="">
+    </div>
+  </div>
+
   <!-- MODOS B2C / B2B -->
   <div id="rep-plugins-modos" class="rep-plugins__modos rep-bg-white">
     <div class="container">
@@ -921,6 +986,99 @@
 #rep-plugins .rep-plugins__featureTitle{ margin:0; }
 #rep-plugins .rep-plugins__featureDesc{ margin:0;flex:1; }
 
+/* DASHBOARD GALLERY */
+#rep-plugins .rep-plugins__dashboard{ padding:54px 0; }
+#rep-plugins .rep-plugins__galleryGrid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+  margin-top:28px;
+}
+#rep-plugins .rep-plugins__galleryItem{
+  position:relative;
+  border-radius:16px;
+  overflow:hidden;
+  cursor:pointer;
+  border:1px solid var(--rep-border);
+  box-shadow:var(--rep-shadow-sm,0 1px 3px rgba(0,0,0,.06));
+  transition:transform .25s ease,box-shadow .25s ease;
+  outline:none;
+}
+#rep-plugins .rep-plugins__galleryItem:hover,
+#rep-plugins .rep-plugins__galleryItem:focus-visible{
+  transform:translateY(-4px);
+  box-shadow:0 12px 32px rgba(30,47,35,.14);
+}
+#rep-plugins .rep-plugins__galleryItem--wide{
+  grid-column:1 / -1;
+}
+#rep-plugins .rep-plugins__galleryItem img{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:cover;
+  transition:transform .35s ease;
+}
+#rep-plugins .rep-plugins__galleryItem:hover img{
+  transform:scale(1.02);
+}
+#rep-plugins .rep-plugins__galleryCaption{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  padding:14px 18px;
+  background:linear-gradient(to top,rgba(15,32,23,.88) 0%,rgba(15,32,23,.45) 70%,transparent 100%);
+  display:flex;flex-direction:column;gap:3px;
+  pointer-events:none;
+  opacity:0;
+  transform:translateY(6px);
+  transition:opacity .25s ease,transform .25s ease;
+}
+#rep-plugins .rep-plugins__galleryItem:hover .rep-plugins__galleryCaption,
+#rep-plugins .rep-plugins__galleryItem:focus-visible .rep-plugins__galleryCaption{
+  opacity:1;transform:translateY(0);
+}
+#rep-plugins .rep-plugins__galleryCaptionTitle{
+  font:700 .95rem/1.2 var(--rep-font-body);color:#fff;
+}
+#rep-plugins .rep-plugins__galleryCaptionDesc{
+  font:400 .82rem/1.3 var(--rep-font-body);color:rgba(255,255,255,.75);
+}
+
+/* Lightbox */
+#rep-plugins .rep-plugins__lightbox{
+  position:fixed;inset:0;z-index:99999;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(15,32,23,.92);
+  backdrop-filter:blur(8px);
+  opacity:0;pointer-events:none;
+  transition:opacity .3s ease;
+}
+#rep-plugins .rep-plugins__lightbox.is-active{
+  opacity:1;pointer-events:auto;
+}
+#rep-plugins .rep-plugins__lightboxClose{
+  position:absolute;top:18px;right:22px;
+  font-size:2rem;line-height:1;color:#fff;
+  background:none;border:none;cursor:pointer;
+  opacity:.7;transition:opacity .2s;
+}
+#rep-plugins .rep-plugins__lightboxClose:hover{ opacity:1; }
+#rep-plugins .rep-plugins__lightboxImg{
+  max-width:92vw;max-height:88vh;
+  border-radius:12px;
+  box-shadow:0 8px 40px rgba(0,0,0,.35);
+  transform:scale(.92);
+  transition:transform .3s ease;
+}
+#rep-plugins .rep-plugins__lightbox.is-active .rep-plugins__lightboxImg{
+  transform:scale(1);
+}
+@media (max-width:640px){
+  #rep-plugins .rep-plugins__galleryGrid{ grid-template-columns:1fr; }
+  #rep-plugins .rep-plugins__galleryItem--wide{ grid-column:auto; }
+  #rep-plugins .rep-plugins__galleryCaption{ opacity:1;transform:translateY(0); }
+}
+
 /* MODOS */
 #rep-plugins .rep-plugins__modos{ padding:54px 0; }
 #rep-plugins .rep-plugins__modosGrid{ display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:28px; }
@@ -961,3 +1119,31 @@
   #rep-plugins .rep-plugins__hookRow span{ text-align:left; }
 }
 </style>
+<script>
+(function(){
+  var lb=document.getElementById('rep-plugins-lightbox');
+  var lbImg=document.getElementById('rep-plugins-lightbox-img');
+  if(!lb||!lbImg) return;
+  document.querySelectorAll('.rep-plugins__galleryItem').forEach(function(item){
+    item.addEventListener('click',function(){
+      var img=this.querySelector('img');
+      if(!img) return;
+      lbImg.src=img.src;
+      lbImg.alt=img.alt;
+      lb.classList.add('is-active');
+      document.body.style.overflow='hidden';
+    });
+  });
+  lb.addEventListener('click',function(e){
+    if(e.target===lbImg) return;
+    lb.classList.remove('is-active');
+    document.body.style.overflow='';
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&lb.classList.contains('is-active')){
+      lb.classList.remove('is-active');
+      document.body.style.overflow='';
+    }
+  });
+})();
+</script>
