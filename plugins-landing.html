@@ -518,7 +518,7 @@
 /* OSS / Validaciones */
 #rep-catalog .rep-catalog__oss{
   padding:64px 0 72px;
-  background:linear-gradient(150deg,#0d1f16 0%,#112318 60%,#0f1d14 100%);
+  background:linear-gradient(150deg,#0d1f16 0%,#112318 60%,var(--rep-forest) 100%);
 }
 #rep-catalog .rep-catalog__ossEyebrow{ text-align:center;margin-bottom:18px; }
 #rep-catalog .rep-catalog__ossHeadline{
@@ -644,3 +644,20 @@
   #rep-catalog .rep-catalog__ossGhBtn{ width:100%;text-align:center;justify-content:center; }
 }
 </style>
+<script>
+(function(){
+  function stripLeadingBomInShortcodes(){
+    document.querySelectorAll('.elementor-widget-shortcode .elementor-shortcode').forEach(function(el){
+      if (el.firstChild && el.firstChild.nodeType === Node.TEXT_NODE) {
+        el.firstChild.nodeValue = el.firstChild.nodeValue.replaceAll('\uFEFF', '');
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', stripLeadingBomInShortcodes);
+  } else {
+    stripLeadingBomInShortcodes();
+  }
+})();
+</script>
