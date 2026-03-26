@@ -249,24 +249,47 @@
     </div>
   </div>
 
-  <!-- OSS NOTE -->
-  <div class="rep-catalog__oss rep-bg-white">
+  <!-- OSS / Validaciones -->
+  <div class="rep-catalog__oss">
     <div class="container">
-      <div class="rep-card rep-catalog__ossCard">
-        <div class="rep-catalog__ossText">
-          <div class="rep-catalog__ossTitle rep-heading-3"><i class="ph-bold ph-code" aria-hidden="true" style="margin-right:8px;color:var(--rep-teal);"></i>Releases p&uacute;blicos, changelog verificable y c&oacute;digo auditable</div>
-          <p class="rep-text-body" style="margin:8px 0 0">
-            En Replanta publicamos versiones con historial real y trazable: changelog por release, ZIP descargable y documentaci&oacute;n t&eacute;cnica. Esta transparencia permite evaluar cada mejora antes de desplegar en producci&oacute;n.
-          </p>
-          <p class="rep-text-body" style="margin:10px 0 0;color:var(--rep-text-secondary)">
-            <strong>Hitos del proyecto:</strong> el conector <strong>Lite</strong> est&aacute; aprobado en el <strong>repositorio oficial de WordPress.org</strong> y el equipo est&aacute; reconocido como <strong>SAP Partner</strong>. DNIWOO y Sello Replanta son open source en GitHub; SAP Woo Suite PRO y sus addons de marketplace son privados con acceso por solicitud directa.
-          </p>
+      <div class="rep-catalog__ossEyebrow">
+        <span class="rep-chip rep-chip--teal"><i class="ph-bold ph-shield-check" aria-hidden="true"></i>&thinsp;Validaciones &amp; Transparencia</span>
+      </div>
+      <h2 class="rep-catalog__ossHeadline">Dos hitos reales.<br>C&oacute;digo que se puede auditar.</h2>
+      <p class="rep-catalog__ossLead">No son promesas de marketing: son certificaciones verificables y c&oacute;digo p&uacute;blico. Antes de confiar tu integraci&oacute;n SAP&ndash;WooCommerce a un plugin, comprueba qui&eacute;n lo firma.</p>
+      <div class="rep-catalog__ossMilestones">
+
+        <!-- WP.org -->
+        <div class="rep-catalog__ossMilestone rep-catalog__ossMilestone--wp">
+          <div class="rep-catalog__ossMilIcon"><i class="ph-bold ph-squares-four" aria-hidden="true"></i></div>
+          <div class="rep-catalog__ossMilLabel">Plugin oficial</div>
+          <div class="rep-catalog__ossMilTitle">WordPress.org</div>
+          <p class="rep-catalog__ossMilDesc">El conector Lite est&aacute; aprobado y publicado en el repositorio oficial de WordPress. Revisado bajo est&aacute;ndares GPL, actualizable directamente desde el panel de administraci&oacute;n.</p>
+          <a class="rep-catalog__ossMilLink" href="https://wordpress.org/plugins/replanta-connector-sap-woocommerce/" target="_blank" rel="noopener noreferrer">Ver plugin&ensp;<i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i></a>
         </div>
-        <div class="rep-catalog__ossActions">
-          <a class="rep-btn-accent" href="https://github.com/replantadev">Ver repositorios en GitHub</a>
-          <a class="rep-btn-secondary" href="https://wordpress.org/plugins/replanta-connector-sap-woocommerce/">Ver plugin en WordPress.org</a>
-          <a class="rep-btn-secondary" href="https://replanta.net/contacto">Contactar</a>
+
+        <!-- SAP Partner -->
+        <div class="rep-catalog__ossMilestone rep-catalog__ossMilestone--sap">
+          <div class="rep-catalog__ossMilIcon"><i class="ph-bold ph-seal-check" aria-hidden="true"></i></div>
+          <div class="rep-catalog__ossMilLabel">Certificaci&oacute;n oficial</div>
+          <div class="rep-catalog__ossMilTitle">SAP&nbsp;Partner</div>
+          <p class="rep-catalog__ossMilDesc">El equipo de Replanta est&aacute; reconocido como SAP Partner en el ecosistema SAP Business One. Integraci&oacute;n directa con respaldo t&eacute;cnico oficial del fabricante.</p>
+          <a class="rep-catalog__ossMilLink" href="https://replanta.net/contacto" target="_blank" rel="noopener noreferrer">Hablar con el equipo&ensp;<i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i></a>
         </div>
+
+        <!-- C&oacute;digo auditable -->
+        <div class="rep-catalog__ossMilestone rep-catalog__ossMilestone--git">
+          <div class="rep-catalog__ossMilIcon"><i class="ph-bold ph-git-branch" aria-hidden="true"></i></div>
+          <div class="rep-catalog__ossMilLabel">Open source</div>
+          <div class="rep-catalog__ossMilTitle">GitHub p&uacute;blico</div>
+          <p class="rep-catalog__ossMilDesc">DNIWOO y Sello Replanta son open source. Cada versi&oacute;n incluye changelog real, ZIP descargable y trazabilidad completa para evaluar antes de actualizar en producci&oacute;n.</p>
+          <a class="rep-catalog__ossMilLink" href="https://github.com/replantadev" target="_blank" rel="noopener noreferrer">Ver repositorios&ensp;<i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i></a>
+        </div>
+
+      </div>
+      <div class="rep-catalog__ossActions">
+        <a class="rep-btn-accent" href="https://wordpress.org/plugins/replanta-connector-sap-woocommerce/" target="_blank" rel="noopener noreferrer">Instalar gratis en WordPress.org</a>
+        <a class="rep-catalog__ossGhBtn" href="https://github.com/replantadev" target="_blank" rel="noopener noreferrer"><i class="ph-bold ph-github-logo" aria-hidden="true"></i>&ensp;Ver c&oacute;digo en GitHub</a>
       </div>
     </div>
   </div>
@@ -492,16 +515,74 @@
   display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;
 }
 
-/* OSS NOTE */
-#rep-catalog .rep-catalog__oss{ padding:32px 0 52px; }
-#rep-catalog .rep-catalog__ossCard{
-  display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;
+/* OSS / Validaciones */
+#rep-catalog .rep-catalog__oss{
+  padding:64px 0 72px;
+  background:linear-gradient(150deg,#0d1f16 0%,#112318 60%,#0f1d14 100%);
 }
-#rep-catalog .rep-catalog__ossTitle{ margin:0; }
-#rep-catalog .rep-catalog__ossText{}
+#rep-catalog .rep-catalog__ossEyebrow{ text-align:center;margin-bottom:18px; }
+#rep-catalog .rep-catalog__ossHeadline{
+  font-size:clamp(1.7rem,3.5vw,2.4rem);font-weight:800;color:#fff;
+  text-align:center;margin:0 auto 14px;max-width:680px;line-height:1.2;
+}
+#rep-catalog .rep-catalog__ossLead{
+  font-size:1rem;color:rgba(255,255,255,.6);text-align:center;
+  max-width:600px;margin:0 auto 48px;line-height:1.65;
+}
+#rep-catalog .rep-catalog__ossMilestones{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:40px;
+}
+#rep-catalog .rep-catalog__ossMilestone{
+  background:rgba(255,255,255,.05);border:1px solid rgba(147,241,201,.12);
+  border-radius:16px;padding:28px 22px 22px;
+  display:flex;flex-direction:column;
+  transition:border-color .2s,background .2s;
+}
+#rep-catalog .rep-catalog__ossMilestone:hover{
+  background:rgba(147,241,201,.07);border-color:rgba(147,241,201,.28);
+}
+#rep-catalog .rep-catalog__ossMilIcon{
+  width:52px;height:52px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.55rem;margin-bottom:18px;flex-shrink:0;
+}
+#rep-catalog .rep-catalog__ossMilestone--wp .rep-catalog__ossMilIcon{
+  background:rgba(33,117,155,.22);color:#5baddc;
+}
+#rep-catalog .rep-catalog__ossMilestone--sap .rep-catalog__ossMilIcon{
+  background:rgba(147,241,201,.14);color:var(--rep-green);
+}
+#rep-catalog .rep-catalog__ossMilestone--git .rep-catalog__ossMilIcon{
+  background:rgba(247,212,80,.1);color:var(--rep-sun);
+}
+#rep-catalog .rep-catalog__ossMilLabel{
+  font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--rep-teal);margin-bottom:5px;
+}
+#rep-catalog .rep-catalog__ossMilTitle{
+  font-size:1.2rem;font-weight:800;color:#fff;margin-bottom:10px;line-height:1.2;
+}
+#rep-catalog .rep-catalog__ossMilDesc{
+  font-size:.875rem;color:rgba(255,255,255,.58);line-height:1.6;
+  margin:0;flex:1;padding-bottom:18px;
+}
+#rep-catalog .rep-catalog__ossMilLink{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:.82rem;font-weight:600;color:var(--rep-green);text-decoration:none;
+  border-top:1px solid rgba(147,241,201,.12);padding-top:14px;margin-top:auto;
+  transition:color .15s;
+}
+#rep-catalog .rep-catalog__ossMilLink:hover{ color:#fff; }
 #rep-catalog .rep-catalog__ossActions{
-  display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0;
+  display:flex;gap:12px;justify-content:center;flex-wrap:wrap;
 }
+#rep-catalog .rep-catalog__ossGhBtn{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+  color:#fff;text-decoration:none;padding:12px 24px;border-radius:var(--rep-radius-md);
+  font-size:.95rem;font-weight:500;transition:background .2s,border-color .2s;
+}
+#rep-catalog .rep-catalog__ossGhBtn:hover{ background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.35); }
 
 /* Responsive */
 @media (max-width:1060px){
@@ -514,8 +595,7 @@
 @media (max-width:860px){
   #rep-catalog .rep-catalog__featuredFeatures{ grid-template-columns:1fr; }
   #rep-catalog .rep-catalog__freeGrid{ grid-template-columns:1fr; }
-  #rep-catalog .rep-catalog__ossCard{ grid-template-columns:1fr; }
-  #rep-catalog .rep-catalog__ossActions{ justify-content:flex-start; }
+  #rep-catalog .rep-catalog__ossMilestones{ grid-template-columns:1fr; }
   #rep-catalog .rep-catalog__featuredSide{ flex-direction:column; }
 }
 @media (max-width:640px){
@@ -557,9 +637,10 @@
   #rep-catalog .rep-catalog__specRow .sv{ font-size:.8rem; }
   #rep-catalog .rep-catalog__freeTags{ gap:6px; }
 
-  /* OSS note */
-  #rep-catalog .rep-catalog__oss{ padding:28px 0 44px; }
-  #rep-catalog .rep-card.rep-catalog__ossCard{ padding:18px 16px; }
-  #rep-catalog .rep-catalog__ossActions a{ width:100%;text-align:center; }
+  /* OSS / Validaciones */
+  #rep-catalog .rep-catalog__oss{ padding:44px 0 56px; }
+  #rep-catalog .rep-catalog__ossHeadline{ font-size:clamp(1.5rem,7vw,1.9rem); }
+  #rep-catalog .rep-catalog__ossActions a,
+  #rep-catalog .rep-catalog__ossGhBtn{ width:100%;text-align:center;justify-content:center; }
 }
 </style>
