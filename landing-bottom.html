@@ -1,0 +1,115 @@
+<!-- Continues #rep-plugins from landing-top.html -->
+  <!-- REQUISITOS TECNICOS -->
+  <div id="rep-plugins-tech" class="rep-plugins__tech rep-bg-light">
+    <div class="container">
+      <div class="rep-plugins__head rep-text-center">
+        <span class="rep-chip rep-chip--teal">Requisitos</span>
+        <h2 class="rep-heading-2 rep-text-forest">Qu&eacute; necesitas en tu infraestructura</h2>
+        <p class="rep-text-body">Dise&ntilde;ado para entornos SAP B1 reales. Si tienes Service Layer activo y WooCommerce actualizado, est&aacute;s listo.</p>
+      </div>
+      <div class="rep-plugins__techGrid">
+
+        <div class="rep-card rep-plugins__techCard">
+          <div class="rep-plugins__techLabel rep-text-small">WordPress / WooCommerce</div>
+          <ul class="rep-plugins__techList">
+            <li><span class="rep-plugins__techKey">WordPress</span><span class="rep-plugins__techVal">5.8 o superior</span></li>
+            <li><span class="rep-plugins__techKey">WooCommerce</span><span class="rep-plugins__techVal">6.0 &ndash; 9.x</span></li>
+            <li><span class="rep-plugins__techKey">PHP</span><span class="rep-plugins__techVal">7.4+ (8.1 recomendado)</span></li>
+            <li><span class="rep-plugins__techKey">HPOS</span><span class="rep-plugins__techVal">Compatible</span></li>
+            <li><span class="rep-plugins__techKey">Multisite</span><span class="rep-plugins__techVal">No soportado (single site)</span></li>
+          </ul>
+        </div>
+
+        <div class="rep-card rep-plugins__techCard">
+          <div class="rep-plugins__techLabel rep-text-small">SAP Business One</div>
+          <ul class="rep-plugins__techList">
+            <li><span class="rep-plugins__techKey">Versi&oacute;n</span><span class="rep-plugins__techVal">SAP B1 9.3 PL14 o superior</span></li>
+            <li><span class="rep-plugins__techKey">API</span><span class="rep-plugins__techVal">Service Layer (HTTPS) o DI API</span></li>
+            <li><span class="rep-plugins__techKey">Permisos</span><span class="rep-plugins__techVal">Business Partners, Pedidos, Art&iacute;culos</span></li>
+            <li><span class="rep-plugins__techKey">On-premise / Cloud</span><span class="rep-plugins__techVal">Ambos soportados</span></li>
+            <li><span class="rep-plugins__techKey">SAP B1 10.0</span><span class="rep-plugins__techVal">Verificado en producci&oacute;n</span></li>
+          </ul>
+        </div>
+
+        <div class="rep-card rep-plugins__techCard rep-plugins__techCard--wide">
+          <div class="rep-plugins__techLabel rep-text-small">Puntos de extensi&oacute;n &mdash; 14 hooks en v2.11.11</div>
+          <div class="rep-plugins__hooksGrid">
+            <div class="rep-plugins__hookRow"><code>sws_before_order_sync</code><span>Antes de enviar el pedido a SAP</span></div>
+            <div class="rep-plugins__hookRow"><code>sws_after_order_sync</code><span>Tras sincronizaci&oacute;n exitosa</span></div>
+            <div class="rep-plugins__hookRow"><code>sws_bp_data</code><span>Modifica los datos del Business Partner</span></div>
+            <div class="rep-plugins__hookRow"><code>sws_document_type</code><span>Determina el tipo de documento (SO / IN / QT)</span></div>
+            <div class="rep-plugins__hookRow"><code>sws_stock_value</code><span>Filtra el valor de stock antes de actualizar</span></div>
+            <div class="rep-plugins__hookRow"><code>sws_price_value</code><span>Modifica el precio antes de sincronizar</span></div>
+          </div>
+          <p class="rep-text-small" style="margin:12px 0 0;color:var(--rep-text-muted)">Y 8 hooks adicionales para log, errores, cat&aacute;logo y canales. Documentaci&oacute;n completa en <a href="https://replantadev.github.io/sapwoo/" class="rep-plugins__link" style="color:var(--rep-forest)">GitHub Pages</a>.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div id="rep-plugins-faq" class="rep-plugins__faq rep-bg-white" aria-label="Preguntas frecuentes">
+    <div class="container">
+      <div class="rep-plugins__head rep-text-center">
+        <span class="rep-chip rep-chip--teal">FAQ</span>
+        <h2 class="rep-heading-2 rep-text-forest">Lo que nos preguntan siempre</h2>
+        <p class="rep-text-body">Respuestas directas, sin rodeos. Si algo no esta aqui, <a href="https://replanta.net/contacto">escribenos</a>.</p>
+      </div>
+
+      <div class="rep-plugins__faqGrid rep-plugins__faqGrid--two">
+        <div class="rep-card rep-plugins__faqItem">
+          <div class="rep-plugins__faqQ rep-heading-3">Funciona con SAP Business One o necesito otro modulo de SAP?</div>
+          <div class="rep-plugins__faqA rep-text-body">Esta disenado especificamente para <strong>SAP Business One</strong> via Service Layer o DI API. No es compatible con S/4HANA ni con ECC. Si tienes SAP B1, tanto on-premise como cloud, es lo tuyo.</div>
+        </div>
+        <div class="rep-card rep-plugins__faqItem">
+          <div class="rep-plugins__faqQ rep-heading-3">Cuanto tarda un pedido de WooCommerce en llegar a SAP?</div>
+          <div class="rep-plugins__faqA rep-text-body">La sincronizacion es casi inmediata: se dispara en el momento en que WooCommerce confirma el pedido. No hay cola de espera de minutos ni crons de horas. Si falla la conexion, el sistema reintenta automaticamente y deja log del error.</div>
+        </div>
+        <div class="rep-card rep-plugins__faqItem">
+          <div class="rep-plugins__faqQ rep-heading-3">SAP Woo Suite es open source o hay que pagar licencia?</div>
+          <div class="rep-plugins__faqA rep-text-body">No es open source ni de pago por suscripcion. SAP Woo Suite y sus addons de marketplace son privados: el acceso se gestiona directamente con nosotros, sin cuota mensual ni plataforma intermediaria. DNIWOO Validator y Sello Replanta si son open source en GitHub.</div>
+        </div>
+        <div class="rep-card rep-plugins__faqItem">
+          <div class="rep-plugins__faqQ rep-heading-3">Cuanto cuesta en total? Hay cuota anual o precio por pedido?</div>
+          <div class="rep-plugins__faqA rep-text-body">La instalacion y personalizacion parte desde <strong>1.500 &euro;</strong> (pago unico, incluye scope call y adaptacion a tu SAP B1). El mantenimiento son <strong>149 &euro;/mes</strong>: updates, soporte directo y acceso al equipo. Sin cuotas por volumen de pedidos ni por canales activos.</div>
+        </div>
+        <div class="rep-card rep-plugins__faqItem">
+          <div class="rep-plugins__faqQ rep-heading-3">Como se actualiza? Tengo que ir a GitHub a descargar cada version?</div>
+          <div class="rep-plugins__faqA rep-text-body">No. Las actualizaciones llegan directamente al panel de WordPress igual que cualquier otro plugin. Sin descargas manuales ni revisar GitHub: cuando hay nueva version, aparece la notificacion y actualizas con un clic.</div>
+        </div>
+        <div class="rep-card rep-plugins__faqItem">
+          <div class="rep-plugins__faqQ rep-heading-3">Que pasa si algo falla en una sincronizacion?</div>
+          <div class="rep-plugins__faqA rep-text-body">Todos los errores quedan registrados en los logs de la suite con el contexto completo: que datos se enviaron, que respondio SAP, en que hook fallo. No hay errores silenciosos. Puedes revisar el estado desde el panel de administracion.</div>
+        </div>
+        <div class="rep-card rep-plugins__faqItem">
+          <div class="rep-plugins__faqQ rep-heading-3">Funciona tanto para B2C como para B2B?</div>
+          <div class="rep-plugins__faqA rep-text-body">Si. En modo B2C los clientes se crean como Business Partners gen&eacute;ricos en SAP. En modo B2B el usuario de WordPress se vincula a un CardCode espec&iacute;fico: activa su lista de precios personalizada, sus condiciones de pago y el tipo de documento SAP que le corresponde. Ambos modos pueden coexistir en la misma tienda.</div>
+        </div>
+        <div class="rep-card rep-plugins__faqItem">
+          <div class="rep-plugins__faqQ rep-heading-3">Cuanto tiempo tarda la puesta en marcha?</div>
+          <div class="rep-plugins__faqA rep-text-body">Normalmente entre 2 y 4 semanas desde la scope call. Depende de la complejidad de vuestra configuracion SAP: numero de almacenes, tipos de documento, integraciones de marketplace. La scope call previa es gratuita y sin compromiso, y sirve para dimensionarlo con precision antes de presupuestar.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACTO -->
+  <div id="rep-plugins-contact" class="rep-plugins__contact rep-bg-light" aria-label="Contacto">
+    <div class="container">
+      <div class="rep-plugins__contactBox rep-card">
+        <div>
+          <div class="rep-plugins__contactLabel rep-text-small">Integracion a medida</div>
+          <h3 class="rep-heading-3" style="margin:6px 0 0">Tienes SAP Business One y vendes en WooCommerce o en marketplaces?</h3>
+          <p class="rep-text-body" style="margin:10px 0 0; max-width:64ch">Si hay procesos manuales entre tu ERP y tu tienda, podemos eliminarlos. Cuentanos como funciona tu flujo ahora y en 15 minutos te decimos si SAP Woo Suite encaja tal como esta o que habria que adaptar.</p>
+        </div>
+        <div class="rep-plugins__contactActions">
+          <a class="rep-btn-primary" href="/contacto/">Solicitar presupuesto</a>
+          <a class="rep-btn-secondary" href="#rep-plugins-pricing">Ver precios</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div><!-- /#rep-plugins -->
