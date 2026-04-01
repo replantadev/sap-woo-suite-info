@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/versi%C3%B3n-2.15.1-blue" alt="Versión">
+  <img src="https://img.shields.io/badge/versi%C3%B3n-2.15.2-blue" alt="Versión">
   <img src="https://img.shields.io/badge/WooCommerce-6.0%2B-purple" alt="WooCommerce">
   <img src="https://img.shields.io/badge/SAP%20B1-9.3%20%7C%2010.0-orange" alt="SAP B1">
   <img src="https://img.shields.io/badge/PHP-7.4%2B-777BB4" alt="PHP">
