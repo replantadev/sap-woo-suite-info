@@ -113,6 +113,78 @@
 
 
 </div><!-- /#rep-plugins -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Funciona con SAP Business One o necesito otro módulo de SAP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Está diseñado específicamente para SAP Business One vía Service Layer o DI API. No es compatible con S/4HANA ni con ECC. Si tienes SAP B1, tanto on-premise como cloud, es lo tuyo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tarda un pedido de WooCommerce en llegar a SAP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La sincronización es casi inmediata: se dispara en el momento en que WooCommerce confirma el pedido. No hay cola de espera de minutos ni crons de horas. Si falla la conexión, el sistema reintenta automáticamente y deja log del error."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿SAP Woo Suite es open source o hay que pagar licencia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No es open source ni de pago por suscripción. SAP Woo Suite y sus addons de marketplace son privados: el acceso se gestiona directamente con Replanta, sin cuota mensual ni plataforma intermediaria."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta en total? ¿Hay cuota anual o precio por pedido?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sin cuotas por volumen de pedidos ni por canales activos. La instalación incluye scope call y adaptación a tu SAP B1. Consulta los planes en la sección de precios."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo se actualiza el plugin? ¿Tengo que ir a GitHub a descargar cada versión?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Las actualizaciones llegan directamente al panel de WordPress igual que cualquier otro plugin. Sin descargas manuales ni revisar GitHub: cuando hay nueva versión, aparece la notificación y actualizas con un clic."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa si algo falla en una sincronización?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Todos los errores quedan registrados en los logs de la suite con el contexto completo: qué datos se enviaron, qué respondió SAP, en qué hook falló. No hay errores silenciosos. Puedes revisar el estado desde el panel de administración de WordPress."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Funciona tanto para B2C como para B2B?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. En modo B2C los clientes se crean como Business Partners genéricos en SAP. En modo B2B el usuario de WordPress se vincula a un CardCode específico: activa su lista de precios personalizada, sus condiciones de pago y el tipo de documento SAP que le corresponde. Ambos modos pueden coexistir en la misma tienda."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tiempo tarda la puesta en marcha del conector SAP WooCommerce?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Normalmente entre 2 y 4 semanas desde la scope call. Depende de la complejidad de la configuración SAP: número de almacenes, tipos de documento, integraciones de marketplace. La scope call previa es gratuita y sin compromiso."
+      }
+    }
+  ]
+}
+</script>
 <style>
 /* =========================================================
    Replanta · Pagina Plugins
