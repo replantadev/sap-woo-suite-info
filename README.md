@@ -186,12 +186,36 @@ add_action('sapwc_loaded', function () {
 
 | Versión | Destacado |
 |---------|-----------|
+| **2.15.5** | Vigilante 24/7 — monitorización proactiva con alertas IA en SAP Woo Control Center |
 | **2.2.0** | Fix detección Amazon (`_umb_marketplace`), documentación y landing actualizados |
 | **2.1.0** | Channel Detector automático, soporte TikTok Shop oficial, 3 nuevos hooks |
 | **2.0.0** | Arquitectura multicanal, Channel Manager, HPOS, API Client singleton, 11 hooks de extensión |
 | 1.4.2-beta | Importación selectiva con preview de campos |
 | 1.4.0-beta | Importación unificada con guía de operario |
 | 1.3.0-beta | Sincronización automática de clientes B2B |
+
+---
+
+## SAP Woo Control Center — Vigilante 24/7
+
+El **SAP Woo Control Center** es el panel de gestión centralizado que acompaña a SAP Woo Suite. Su módulo **Vigilante** monitoriza de forma proactiva todas las instalaciones conectadas.
+
+### Qué detecta
+
+| Regla | Severidad | Descripción |
+|-------|-----------|-------------|
+| Reintentos agotados | CRITICO | Pedidos que han fallado el número máximo de reintentos y requieren acción manual |
+| Cron silence | CRITICO / AVISO | El Action Scheduler lleva >90 min sin ejecutar (crítico >240 min) |
+| Pedido en limbo | AVISO | Un pedido lleva múltiples ciclos siendo omitido sin fallar ni sincronizarse |
+| Error spike | CRITICO / AVISO | ≥5 errores en la última hora (crítico si ≥10) |
+| Cliente SAP inactivo | CRITICO | Un Business Partner marcado como Inválido bloquea pedidos |
+| Pedido sin sincronizar | CRITICO / AVISO | Pedido en procesando/en espera >90 min sin llegar a SAP (crítico >240 min) |
+
+### Alertas y análisis IA
+
+- Email inmediato cuando aparece una nueva incidencia crítica
+- Análisis IA (Claude Haiku o GPT-4o-mini) con explicación, pasos de resolución y consejo de prevención
+- Informe semanal automático todos los lunes a las 08:00
 
 ---
 
