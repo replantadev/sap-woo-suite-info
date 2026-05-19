@@ -1,4 +1,4 @@
-﻿<p align="center">
+<p align="center">
   <img src="https://replanta.net/wp-content/uploads/2025/12/icono.png" alt="Replanta" width="100" style="border-radius: 50%; background: #1a1a2e; padding: 10px;">
 </p>
 
