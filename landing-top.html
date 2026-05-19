@@ -1,4 +1,35 @@
-﻿<div id="rep-plugins" aria-labelledby="rep-plugins-h">
+﻿<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "SAP Woo Suite",
+  "alternateName": "Conector SAP WooCommerce",
+  "operatingSystem": "WordPress",
+  "applicationCategory": "BusinessApplication",
+  "softwareVersion": "2.15.18",
+  "url": "https://replanta.net/conector-sap-woocommerce/",
+  "description": "Conector SAP WooCommerce que integra SAP Business One con WooCommerce vía Service Layer. Sincronización de pedidos, stock, precios y catálogo sin exportaciones manuales.",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "EUR",
+    "price": "0",
+    "availability": "https://schema.org/InStock"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.5",
+    "ratingCount": "14",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Replanta",
+    "url": "https://replanta.net"
+  }
+}
+</script>
+<div id="rep-plugins" aria-labelledby="rep-plugins-h">
   <!-- HERO -->
   <div class="rep-plugins__hero">
     <div class="container rep-plugins__heroGrid">
@@ -7,12 +38,12 @@
         <div class="rep-plugins__chips" aria-hidden="true">
           <span class="rep-chip rep-chip--green">SAP Business One</span>
           <span class="rep-chip rep-chip--teal">WooCommerce</span>
-          <span class="rep-chip rep-chip--sun">Sin middleware</span>
+          <span class="rep-chip rep-chip--sun">Conexi&oacute;n directa</span>
         </div>
 
         <h1 id="rep-plugins-h" class="rep-heading-1 rep-text-white rep-plugins__h1">
           SAP Business One conectado<br>a WooCommerce.
-          <span class="rep-plugins__h1Sub">Sin exportaciones manuales. Sin middleware.</span>
+          <span class="rep-plugins__h1Sub">El conector SAP WooCommerce. Sin exportaciones manuales.</span>
         </h1>
 
         <p class="rep-text-body rep-text-white rep-plugins__lead">
@@ -43,9 +74,6 @@
           <a class="rep-btn-secondary" href="https://replanta.net/contacto">Solicitar presupuesto</a>
         </div>
 
-        <p class="rep-text-small rep-text-white rep-plugins__fine">
-          Una integración SAP-Woo rinde tanto como la infraestructura donde corre. Nuestro <a class="rep-plugins__link" href="/eco-hosting/">eco hosting</a> está optimizado para WooCommerce en producción.
-        </p>
       </div>
 
       <aside class="rep-plugins__heroPanel" aria-label="Que incluye">
@@ -117,6 +145,9 @@
           </div>
           </div><!-- /panelContent -->
         </div>
+        <p class="rep-plugins__panelNote">
+          Una integraci&oacute;n SAP&#8209;Woo rinde tanto como la infraestructura donde corre. Nuestro <a class="rep-plugins__link" href="/eco-hosting/">eco hosting</a> est&aacute; optimizado para WooCommerce en producci&oacute;n.
+        </p>
       </aside>
 
     </div>
@@ -171,13 +202,13 @@
         <span class="rep-chip rep-chip--teal">Producto principal &middot; v2.15.18</span>
         <h2 class="rep-heading-2 rep-text-forest">SAP Woo Suite</h2>
         <p class="rep-text-body">
-          La integración directa entre <strong>SAP Business One</strong> y <strong>WooCommerce</strong>, sin middleware de terceros ni plataformas iPaaS. Se conecta vía <strong>Service Layer</strong>, trabaja con la API nativa de WooCommerce y tiene 14 puntos de extensión para adaptar la lógica de negocio sin tocar el núcleo del plugin.
+          La integración directa entre <strong>SAP Business One</strong> y <strong>WooCommerce</strong>, sin software adicional de terceros ni plataformas iPaaS. Se conecta vía <strong>Service Layer</strong>, trabaja con la API nativa de WooCommerce y tiene 14 puntos de extensión para adaptar la lógica de negocio sin tocar el núcleo del plugin.
         </p>
 
         <div class="rep-plugins__suiteBullets">
           <div class="rep-plugins__suiteBullet">
             <div class="h rep-heading-3">Bidireccional y sin intermediarios</div>
-            <div class="p rep-text-small">Productos, stock y precios de SAP a Woo. Pedidos y clientes de Woo a SAP. Conexión directa vía Service Layer o DI API. Sin middleware intermedio que sume costes y añada puntos de fallo.</div>
+            <div class="p rep-text-small">Productos, stock y precios de SAP a Woo. Pedidos y clientes de Woo a SAP. Conexión directa vía Service Layer o DI API. Sin intermediarios que sumen costes ni añadan puntos de fallo.</div>
           </div>
           <div class="rep-plugins__suiteBullet">
             <div class="h rep-heading-3">Trazabilidad completa en producción</div>
@@ -491,6 +522,11 @@
 #rep-plugins .rep-plugins__kpi .sv{ font:800 .9rem/1.1 var(--rep-font-body); color:#fff; text-align:right; }
 #rep-plugins .rep-plugins__ctas{ display:flex; gap:10px; flex-wrap:wrap; margin-top:16px; }
 #rep-plugins .rep-plugins__fine{ margin-top:10px; color:rgba(255,255,255,.78); }
+#rep-plugins .rep-plugins__panelNote{
+  margin:12px 2px 0;padding:10px 14px;
+  font:400 .8rem/1.5 var(--rep-font-body);color:rgba(255,255,255,.55);
+  text-align:center;border-top:1px solid rgba(255,255,255,.08);
+}
 #rep-plugins .rep-plugins__link{ color:rgba(255,255,255,.92); text-decoration:underline; text-underline-offset:2px; }
 
 /* PANEL */

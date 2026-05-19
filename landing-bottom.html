@@ -113,6 +113,78 @@
 
 
 </div><!-- /#rep-plugins -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué es el conector SAP WooCommerce?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El conector SAP WooCommerce (SAP Woo Suite) es un plugin de WordPress que integra SAP Business One con WooCommerce de forma directa, sin software adicional. Conecta ambos sistemas vía SAP Service Layer (REST API) para sincronizar pedidos, stock, precios y catálogo automáticamente."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo funciona la integración entre SAP Business One y WooCommerce?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cuando un cliente realiza un pedido en WooCommerce, el conector lo envía automáticamente a SAP B1 como documento de venta vía Service Layer. En sentido inverso, sincroniza precios desde las listas de precios de SAP y actualiza el stock de WooCommerce según los almacenes configurados en SAP Business One."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué versiones de SAP B1 son compatibles con el conector?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El conector SAP WooCommerce es compatible con SAP Business One 9.3 PL14 o superior y SAP B1 10.0, tanto en entornos on-premise como en la nube. Requiere SAP Service Layer activo con acceso HTTPS desde el servidor WordPress."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Se pueden sincronizar varios almacenes de SAP con WooCommerce?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. El conector SAP WooCommerce permite configurar múltiples almacenes SAP y asignarlos por producto mediante el campo de almacén en WooCommerce. El stock se consolida o segmenta según la configuración, y cada línea de pedido puede enviarse al almacén correspondiente en SAP B1."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿El conector SAP WooCommerce soporta clientes B2B con listas de precios propias?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. En modo B2B, cada usuario de WordPress se vincula a un CardCode de SAP Business One. El cliente ve su lista de precios personalizada de SAP, accede a sus condiciones de pago y genera el tipo de documento correcto (pedido, factura o presupuesto) según su perfil en SAP."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿El conector es compatible con marketplaces como TikTok, Amazon o Miravia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. SAP Woo Suite incluye soporte nativo para TikTok Shop (vía TikTok for WooCommerce) y Amazon (vía Amazon by WooCommerce). Los pedidos de todos los canales fluyen hacia SAP B1 por el mismo flujo que los pedidos web. El addon de Miravia está disponible como módulo adicional."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa si un pedido falla al enviarse a SAP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El conector SAP WooCommerce registra cada error con detalle en su panel de logs dentro del admin de WordPress. Si un pedido no llega a SAP, puedes reenviarlo manualmente o activar los reintentos automáticos. Cada operación queda trazada: qué se envió, qué respondió SAP y en qué paso falló."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿El conector SAP WooCommerce necesita mantenimiento técnico continuo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El plugin se actualiza automáticamente desde el panel de WordPress como cualquier otro plugin. Las actualizaciones incluyen compatibilidad con nuevas versiones de SAP B1, WooCommerce y PHP. Para entornos en producción, el plan de mantenimiento incluye monitorización proactiva y resolución prioritaria de incidencias."
+      }
+    }
+  ]
+}
+</script>
 <style>
 /* =========================================================
    Replanta · Pagina Plugins
