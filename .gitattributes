@@ -1,0 +1,8 @@
+# Force LF in repo for all text files — prevents BOM/CRLF issues from Windows builds
+* text=auto eol=lf
+
+*.html text eol=lf
+*.md   text eol=lf
+*.css  text eol=lf
+*.js   text eol=lf
+*.json text eol=lf
