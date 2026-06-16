@@ -1,4 +1,4 @@
-﻿<div id="rep-catalog" aria-labelledby="rep-catalog-h">
+<div id="rep-catalog" aria-labelledby="rep-catalog-h">
 
   <!-- HERO -->
   <div class="rep-catalog__hero">
@@ -18,7 +18,7 @@
           <div class="rep-catalog__heroMeta">
             <span class="rep-catalog__metaItem">4 plugins activos</span>
             <span class="rep-catalog__metaSep">&middot;</span>
-            <span class="rep-catalog__metaItem">M&aacute;s de 18 releases en producci&oacute;n</span>
+            <span class="rep-catalog__metaItem">M&aacute;s de 20 releases publicados</span>
             <span class="rep-catalog__metaSep">&middot;</span>
             <span class="rep-catalog__metaItem">Licencia abierta o privada seg&uacute;n producto</span>
           </div>
@@ -145,6 +145,48 @@
             </div>
           </div>
         </div>
+
+        <!-- Cómo funciona -->
+        <div class="rep-catalog__howItWorks">
+          <div class="rep-catalog__hwTitle rep-heading-3">C&oacute;mo funciona</div>
+          <div class="rep-catalog__hwSteps">
+            <div class="rep-catalog__hwStep">
+              <div class="rep-catalog__hwNum">1</div>
+              <div>
+                <div class="rep-catalog__hwLabel">Pedido en WooCommerce</div>
+                <div class="rep-catalog__hwDesc">El cliente compra en la tienda. El conector detecta el evento de forma instant&aacute;nea.</div>
+              </div>
+            </div>
+            <div class="rep-catalog__hwArrow">&rarr;</div>
+            <div class="rep-catalog__hwStep">
+              <div class="rep-catalog__hwNum">2</div>
+              <div>
+                <div class="rep-catalog__hwLabel">Documento SAP creado</div>
+                <div class="rep-catalog__hwDesc">Pedido de venta, factura o presupuesto seg&uacute;n configuraci&oacute;n. V&iacute;a Service Layer REST.</div>
+              </div>
+            </div>
+            <div class="rep-catalog__hwArrow">&rarr;</div>
+            <div class="rep-catalog__hwStep">
+              <div class="rep-catalog__hwNum">3</div>
+              <div>
+                <div class="rep-catalog__hwLabel">ERP y tienda sincronizados</div>
+                <div class="rep-catalog__hwDesc">Stock, precios y estado del cliente actualizados en tiempo real. Sin exportaciones manuales.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dashboard screenshot -->
+        <div class="rep-catalog__dashWrap">
+          <div class="rep-catalog__dashChrome">
+            <span></span><span></span><span></span>
+            <span class="rep-catalog__dashTitle">SAP Woo Suite &mdash; Panel de control</span>
+          </div>
+          <img class="rep-catalog__dashImg"
+               src="https://replanta.net/wp-content/uploads/2026/06/dashboard.png"
+               alt="Panel de control del Conector de WooCommerce para SAP Business One"
+               loading="lazy">
+        </div>
       </div>
 
     </div>
@@ -162,7 +204,7 @@
             <img class="rep-catalog__featuredIcon" src="https://replanta.net/wp-content/uploads/2026/06/replanta-care-ico.png" alt="Replanta Care" loading="lazy">
             <div>
               <div class="rep-catalog__featuredName rep-heading-2" style="margin:0">Replanta Care</div>
-              <div class="rep-catalog__featuredSub rep-text-body" style="margin:4px 0 0">Mantenimiento autom&aacute;tico WordPress &middot; v1.9.0 &middot; Estable</div>
+              <div class="rep-catalog__featuredSub rep-text-body" style="margin:4px 0 0">Mantenimiento autom&aacute;tico WordPress &middot; v1.12.2 &middot; Estable</div>
             </div>
           </div>
           <div class="rep-catalog__featuredBadges">
@@ -180,43 +222,66 @@
               Disponible en tres planes seg&uacute;n las necesidades del sitio: desde mantenimiento esencial para sitios sencillos hasta supervisi&oacute;n avanzada con Core Web Vitals, detecci&oacute;n de anomal&iacute;as, staging y Cloudflare para tiendas y portales cr&iacute;ticos.
             </p>
 
-            <div class="rep-catalog__featuredFeatures rep-catalog__carePlans">
-              <div class="rep-catalog__ff">
-                <div class="rep-catalog__ffTitle rep-heading-3">Plan Semilla</div>
-                <ul class="rep-catalog__ffList">
-                  <li>Actualizaciones autom&aacute;ticas con backup previo</li>
-                  <li>Health check semanal (HTTP, BD, PHP, disco)</li>
-                  <li>Reporte mensual por email al cliente</li>
-                </ul>
-              </div>
-              <div class="rep-catalog__ff">
-                <div class="rep-catalog__ffTitle rep-heading-3">Plan Ra&iacute;z</div>
-                <ul class="rep-catalog__ffList">
-                  <li>Todo lo de Semilla</li>
-                  <li>Escaneo de seguridad y vulnerabilidades</li>
-                  <li>Optimizaci&oacute;n BD y cach&eacute; (WPO)</li>
-                  <li>Detecci&oacute;n de errores 404</li>
-                  <li>Reporte semanal</li>
-                </ul>
-              </div>
-              <div class="rep-catalog__ff">
-                <div class="rep-catalog__ffTitle rep-heading-3">Plan Ecosistema</div>
-                <ul class="rep-catalog__ffList">
-                  <li>Todo lo de Ra&iacute;z</li>
-                  <li>Core Web Vitals (LCP, CLS, INP)</li>
-                  <li>Detecci&oacute;n de anomal&iacute;as de tr&aacute;fico</li>
-                  <li>Gesti&oacute;n de staging + backup avanzado</li>
-                  <li>Integraci&oacute;n Cloudflare</li>
-                  <li>Limpieza de medios + SEO b&aacute;sico</li>
-                </ul>
-              </div>
+            <div class="rep-catalog__planTable">
+              <table class="rep-catalog__pt">
+                <thead>
+                  <tr>
+                    <th class="rep-catalog__ptFeature"></th>
+                    <th>Semilla</th>
+                    <th>Ra&iacute;z</th>
+                    <th class="rep-catalog__ptPremium">Ecosistema</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Actualizaciones con backup y rollback</td>
+                    <td>&#10003;</td><td>&#10003;</td><td class="rep-catalog__ptPremium">&#10003;</td>
+                  </tr>
+                  <tr>
+                    <td>Health check (HTTP, BD, PHP, disco)</td>
+                    <td>&#10003;</td><td>&#10003;</td><td class="rep-catalog__ptPremium">&#10003;</td>
+                  </tr>
+                  <tr>
+                    <td>Reporte peri&oacute;dico al cliente</td>
+                    <td>Mensual</td><td>Semanal</td><td class="rep-catalog__ptPremium">Semanal</td>
+                  </tr>
+                  <tr>
+                    <td>Backup Backblaze B2</td>
+                    <td>Semanal</td><td>Diario</td><td class="rep-catalog__ptPremium">Cada 12h</td>
+                  </tr>
+                  <tr>
+                    <td>Seguridad + CVE scanner</td>
+                    <td class="no">&mdash;</td><td>&#10003;</td><td class="rep-catalog__ptPremium">&#10003;</td>
+                  </tr>
+                  <tr>
+                    <td>Optimizaci&oacute;n BD + cach&eacute; (WPO)</td>
+                    <td class="no">&mdash;</td><td>&#10003;</td><td class="rep-catalog__ptPremium">&#10003;</td>
+                  </tr>
+                  <tr>
+                    <td>Registro de errores 404</td>
+                    <td class="no">&mdash;</td><td>&#10003;</td><td class="rep-catalog__ptPremium">&#10003;</td>
+                  </tr>
+                  <tr>
+                    <td>Core Web Vitals (LCP, CLS, INP)</td>
+                    <td class="no">&mdash;</td><td class="no">&mdash;</td><td class="rep-catalog__ptPremium">&#10003;</td>
+                  </tr>
+                  <tr>
+                    <td>Anomal&iacute;as de tr&aacute;fico</td>
+                    <td class="no">&mdash;</td><td class="no">&mdash;</td><td class="rep-catalog__ptPremium">&#10003;</td>
+                  </tr>
+                  <tr>
+                    <td>Staging + Cloudflare</td>
+                    <td class="no">&mdash;</td><td class="no">&mdash;</td><td class="rep-catalog__ptPremium">&#10003;</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
           <div class="rep-catalog__featuredSide">
             <div class="rep-card rep-catalog__featuredFicha">
               <div class="rep-catalog__fichaLabel rep-text-small">Ficha t&eacute;cnica</div>
-              <div class="rep-catalog__fichaRow"><span class="sk">Versi&oacute;n</span><span class="sv">1.9.0 &middot; estable</span></div>
+              <div class="rep-catalog__fichaRow"><span class="sk">Versi&oacute;n</span><span class="sv">1.12.2 &middot; estable</span></div>
               <div class="rep-catalog__fichaRow"><span class="sk">WordPress</span><span class="sv">6.0+ (hasta 6.7)</span></div>
               <div class="rep-catalog__fichaRow"><span class="sk">PHP</span><span class="sv">7.4+ (8.1 recomendado)</span></div>
               <div class="rep-catalog__fichaRow"><span class="sk">Actualizaciones</span><span class="sv">Autom&aacute;ticas desde WP admin</span></div>
@@ -573,11 +638,100 @@
   display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;
 }
 
-/* Care plans: 3-column grid */
-#rep-catalog .rep-catalog__carePlans{ grid-template-columns:1fr 1fr 1fr; }
-@media (max-width:1060px){
-  #rep-catalog .rep-catalog__carePlans{ grid-template-columns:1fr; }
+/* Dashboard screenshot (browser-chrome mockup) */
+#rep-catalog .rep-catalog__dashWrap{
+  margin:24px -28px -28px;
+  border-top:1px solid var(--rep-border);
+  background:#0f1623;
+  overflow:hidden;
+  border-radius:0 0 12px 12px;
 }
+#rep-catalog .rep-catalog__dashChrome{
+  display:flex;align-items:center;gap:6px;
+  padding:9px 14px;
+  background:#1a1f2e;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+#rep-catalog .rep-catalog__dashChrome span{
+  display:block;width:10px;height:10px;border-radius:50%;flex-shrink:0;
+}
+#rep-catalog .rep-catalog__dashChrome span:nth-child(1){ background:#ff5f57; }
+#rep-catalog .rep-catalog__dashChrome span:nth-child(2){ background:#febc2e; }
+#rep-catalog .rep-catalog__dashChrome span:nth-child(3){ background:#28c840; }
+#rep-catalog .rep-catalog__dashTitle{
+  width:auto;height:auto;border-radius:0;
+  font:.71rem/1 var(--rep-font-body);color:rgba(255,255,255,.35);
+  margin-left:8px;letter-spacing:.02em;
+}
+#rep-catalog .rep-catalog__dashImg{
+  display:block;width:100%;height:auto;
+}
+
+/* Cómo funciona */
+#rep-catalog .rep-catalog__howItWorks{
+  margin:20px 0 0;
+  padding:18px 22px;
+  background:var(--rep-bg-light);
+  border-radius:12px;
+  border:1px solid var(--rep-border);
+}
+#rep-catalog .rep-catalog__hwTitle{
+  margin:0 0 14px;color:var(--rep-forest);font-size:.92rem;
+}
+#rep-catalog .rep-catalog__hwSteps{
+  display:flex;align-items:flex-start;gap:10px;flex-wrap:nowrap;
+}
+#rep-catalog .rep-catalog__hwStep{
+  display:flex;gap:10px;align-items:flex-start;flex:1;min-width:0;
+}
+#rep-catalog .rep-catalog__hwNum{
+  width:26px;height:26px;border-radius:50%;flex-shrink:0;
+  background:var(--rep-forest);color:#fff;
+  font:.78rem/26px var(--rep-font-body);font-weight:700;text-align:center;
+}
+#rep-catalog .rep-catalog__hwLabel{
+  font:.86rem/1.2 var(--rep-font-body);font-weight:700;color:var(--rep-text-secondary);
+}
+#rep-catalog .rep-catalog__hwDesc{
+  font:.78rem/1.4 var(--rep-font-body);color:var(--rep-text-muted);margin-top:3px;
+}
+#rep-catalog .rep-catalog__hwArrow{
+  color:var(--rep-forest);font-size:1.1rem;padding-top:5px;flex-shrink:0;opacity:.5;
+}
+
+/* Care plan comparison table */
+#rep-catalog .rep-catalog__planTable{
+  margin-top:20px;
+  border:1px solid var(--rep-border);border-radius:12px;overflow:hidden;
+}
+#rep-catalog .rep-catalog__pt{
+  width:100%;border-collapse:collapse;
+  font:.85rem/1.4 var(--rep-font-body);
+}
+#rep-catalog .rep-catalog__pt th,
+#rep-catalog .rep-catalog__pt td{
+  padding:9px 14px;
+  border-bottom:1px solid var(--rep-border);
+  text-align:center;
+  vertical-align:middle;
+}
+#rep-catalog .rep-catalog__pt th{
+  font:700 .71rem/1 var(--rep-font-body);letter-spacing:.06em;text-transform:uppercase;
+  color:var(--rep-text-muted);background:var(--rep-bg-light);
+}
+#rep-catalog .rep-catalog__ptFeature,
+#rep-catalog .rep-catalog__pt td:first-child{
+  text-align:left;color:var(--rep-text-secondary);font-weight:400;
+}
+#rep-catalog .rep-catalog__ptPremium{
+  background:rgba(16,35,24,.05);
+}
+#rep-catalog .rep-catalog__pt th.rep-catalog__ptPremium{
+  background:rgba(16,35,24,.1);color:var(--rep-forest);
+}
+#rep-catalog .rep-catalog__pt td:not(:first-child){ font-weight:600;color:var(--rep-forest); }
+#rep-catalog .rep-catalog__pt td.no{ color:var(--rep-border);font-weight:400; }
+#rep-catalog .rep-catalog__pt tr:last-child td{ border-bottom:none; }
 
 /* OSS NOTE */
 #rep-catalog .rep-catalog__oss{ padding:32px 0 52px; }
@@ -604,6 +758,11 @@
   #rep-catalog .rep-catalog__ossActions{ justify-content:flex-start; }
   #rep-catalog .rep-catalog__featuredSide{ flex-direction:column; }
 }
+@media (max-width:860px){
+  #rep-catalog .rep-catalog__hwSteps{ flex-wrap:wrap; }
+  #rep-catalog .rep-catalog__hwArrow{ display:none; }
+  #rep-catalog .rep-catalog__hwStep{ flex:1 1 45%; }
+}
 @media (max-width:640px){
   /* Hero: padding top alto para menu transparente en mobile */
   #rep-catalog .rep-catalog__hero{ padding:108px 0 44px; }
@@ -612,6 +771,11 @@
   #rep-catalog .rep-catalog__h1{ font-size:clamp(1.75rem,8vw,2.4rem);margin:10px 0 10px; }
   #rep-catalog .rep-catalog__lead{ font-size:.95rem;margin-bottom:16px; }
   #rep-catalog .rep-catalog__heroMeta{ gap:5px 8px; }
+
+  /* Dashboard bleed en mobile */
+  #rep-catalog .rep-catalog__dashWrap{ margin:20px -16px -18px; }
+  #rep-catalog .rep-catalog__howItWorks{ padding:14px 16px; }
+  #rep-catalog .rep-catalog__hwStep{ flex:1 1 100%; }
 
   /* Featured card: menos padding en mobile */
   #rep-catalog .rep-catalog__featuredCard{ padding:18px 16px; }
