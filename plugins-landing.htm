@@ -4,9 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Plugins WordPress &middot; Replanta</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
   <style>
 /* =======================================================
    REPLANTA PLUGINS -- dark editorial landing
@@ -15,7 +12,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html,body{
   background:#0b1a10;
-  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   -webkit-font-smoothing:antialiased;
 }
 
@@ -44,7 +41,7 @@ html,body{
 .btn{
   display:inline-flex;align-items:center;gap:6px;
   padding:10px 20px;border-radius:9px;
-  font:600 .88rem/1 'Inter',sans-serif;
+  font:600 .88rem/1 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   text-decoration:none;border:none;cursor:pointer;
   transition:all .18s;white-space:nowrap;
 }
@@ -61,7 +58,7 @@ html,body{
 .chip{
   display:inline-flex;align-items:center;
   padding:4px 10px;border-radius:20px;
-  font:.71rem/1 'Inter',sans-serif;font-weight:600;letter-spacing:.05em;
+  font:.71rem/1 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-weight:600;letter-spacing:.05em;
   border:1px solid var(--border);background:var(--surface);color:var(--t3);
 }
 .chip--glow{border-color:rgba(74,222,128,.3);background:rgba(74,222,128,.08);color:var(--accent);}
@@ -69,28 +66,7 @@ html,body{
 .chip--green{border-color:rgba(74,222,128,.25);background:rgba(74,222,128,.07);color:#86efac;}
 .chip--sm{padding:2px 8px;font-size:.69rem;}
 
-/* -- NAV ------------------------------------------------- */
-.rp-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  background:rgba(11,26,16,.88);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--border);
-}
-.rp-nav__inner{
-  display:flex;align-items:center;justify-content:space-between;
-  height:56px;
-}
-.rp-nav__brand{
-  display:flex;align-items:center;gap:9px;
-  text-decoration:none;color:var(--t1);font-weight:800;font-size:.95rem;letter-spacing:-.01em;
-}
-.rp-nav__brand svg{flex-shrink:0;}
-.rp-nav__links{display:flex;align-items:center;gap:24px;}
-.rp-nav__links a{
-  text-decoration:none;color:var(--t3);font-size:.86rem;font-weight:500;
-  transition:color .15s;
-}
-.rp-nav__links a:hover{color:var(--t1);}
+/* -- NAV: omitted — provided by Astra on WordPress --------- */
 
 /* -- HERO ----------------------------------------------- */
 .rp-hero{
@@ -112,12 +88,12 @@ html,body{
   display:flex;flex-direction:column;align-items:center;gap:22px;
 }
 .rp-hero__h1{
-  font:900 clamp(2.5rem,6.5vw,4.2rem)/1.06 'Inter',sans-serif;
+  font:900 clamp(2.5rem,6.5vw,4.2rem)/1.06 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   color:var(--t1);letter-spacing:-.03em;max-width:800px;
 }
 .rp-hero__h1 em{font-style:normal;color:var(--accent);}
 .rp-hero__sub{
-  font:.96rem/1.75 'Inter',sans-serif;color:var(--t3);
+  font:.96rem/1.75 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--t3);
   max-width:560px;
 }
 .rp-hero__ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
@@ -135,8 +111,8 @@ html,body{
 }
 .rp-hero__plugin:hover{border-color:var(--border-hi);background:rgba(255,255,255,.07);}
 .rp-hero__plugin img{width:36px;height:36px;border-radius:8px;flex-shrink:0;object-fit:cover;}
-.rp-hero__pname{font:.88rem/1 'Inter',sans-serif;font-weight:700;color:var(--t1);}
-.rp-hero__ptag{font:.73rem/1 'Inter',sans-serif;color:var(--t3);margin-top:3px;}
+.rp-hero__pname{font:.88rem/1 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-weight:700;color:var(--t1);}
+.rp-hero__ptag{font:.73rem/1 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--t3);margin-top:3px;}
 
 /* -- SECTION BASE --------------------------------------- */
 .rp-s{padding:96px 0;}
@@ -144,16 +120,16 @@ html,body{
 .rp-s__head{text-align:center;margin-bottom:56px;}
 .rp-s__eye{
   display:block;
-  font:.73rem/1 'Inter',sans-serif;font-weight:700;
+  font:.73rem/1 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-weight:700;
   letter-spacing:.09em;text-transform:uppercase;
   color:var(--accent);margin-bottom:14px;
 }
 .rp-s__h2{
-  font:800 clamp(2rem,4vw,2.9rem)/1.08 'Inter',sans-serif;
+  font:800 clamp(2rem,4vw,2.9rem)/1.08 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   color:var(--t1);letter-spacing:-.025em;
 }
 .rp-s__desc{
-  font:.94rem/1.75 'Inter',sans-serif;color:var(--t3);
+  font:.94rem/1.75 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--t3);
   max-width:560px;margin:.9rem auto 0;
 }
 .rp-s__ctas{display:flex;gap:12px;flex-wrap:wrap;}
@@ -166,7 +142,7 @@ html,body{
 
 .rp-pains{list-style:none;display:flex;flex-direction:column;gap:10px;}
 .rp-pains li{
-  font:.87rem/1.5 'Inter',sans-serif;color:var(--t3);
+  font:.87rem/1.5 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--t3);
   display:flex;align-items:flex-start;gap:10px;
 }
 .rp-pain__x{color:var(--red);font-weight:700;flex-shrink:0;line-height:1.5;}
@@ -179,7 +155,7 @@ html,body{
 .rp-feat{
   display:flex;align-items:flex-start;gap:11px;
   padding:16px;background:var(--surface);
-  font:.83rem/1.5 'Inter',sans-serif;color:var(--t3);
+  font:.83rem/1.5 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--t3);
   transition:background .15s;
 }
 .rp-feat:hover{background:rgba(255,255,255,.06);}
@@ -190,7 +166,7 @@ html,body{
 .rp-ficha__row{
   display:flex;justify-content:space-between;align-items:center;
   padding:9px 14px;border-bottom:1px solid var(--border);
-  font:.81rem/1 'Inter',sans-serif;
+  font:.81rem/1 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 }
 .rp-ficha__row:last-child{border-bottom:none;}
 .rp-ficha__row span{color:var(--t3);}
@@ -215,16 +191,16 @@ html,body{
 .rp-plan__badge{
   position:absolute;top:-12px;left:50%;transform:translateX(-50%);
   background:var(--accent);color:#0b1a10;
-  font:.67rem/1 'Inter',sans-serif;font-weight:800;letter-spacing:.07em;text-transform:uppercase;
+  font:.67rem/1 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-weight:800;letter-spacing:.07em;text-transform:uppercase;
   padding:4px 13px;border-radius:20px;white-space:nowrap;
 }
-.rp-plan__name{font:700 1rem/1 'Inter',sans-serif;color:var(--accent);}
-.rp-plan__price{font:800 2rem/1 'Inter',sans-serif;color:var(--t1);margin-top:6px;}
-.rp-plan__price span{font:500 .88rem/1 'Inter',sans-serif;color:var(--t3);}
-.rp-plan__sub{font:.79rem/1.3 'Inter',sans-serif;color:var(--t3);margin-top:3px;}
+.rp-plan__name{font:700 1rem/1 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--accent);}
+.rp-plan__price{font:800 2rem/1 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--t1);margin-top:6px;}
+.rp-plan__price span{font:500 .88rem/1 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--t3);}
+.rp-plan__sub{font:.79rem/1.3 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--t3);margin-top:3px;}
 .rp-plan__feats{list-style:none;flex:1;display:flex;flex-direction:column;gap:8px;}
 .rp-plan__feats li{
-  font:.83rem/1.4 'Inter',sans-serif;color:var(--t2);
+  font:.83rem/1.4 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--t2);
   padding-left:17px;position:relative;
 }
 .rp-plan__feats li::before{
@@ -232,7 +208,7 @@ html,body{
   color:var(--accent);font-weight:700;font-size:.76rem;
 }
 .rp-plan__addon{
-  font:.76rem/1.3 'Inter',sans-serif;color:var(--t3);
+  font:.76rem/1.3 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--t3);
   border-top:1px solid var(--border);padding-top:11px;
 }
 .rp-plan__addon strong{color:var(--t2);}
@@ -245,7 +221,7 @@ html,body{
 }
 .rp-addon__info{
   display:flex;align-items:center;flex-wrap:wrap;gap:10px;
-  font:.87rem/1.4 'Inter',sans-serif;color:var(--t3);
+  font:.87rem/1.4 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--t3);
 }
 .rp-addon__info strong{color:var(--t1);font-weight:700;}
 
@@ -266,10 +242,10 @@ html,body{
 .rp-tool__icon--pad{padding:10px;}
 .rp-tool__body{flex:1;min-width:0;}
 .rp-tool__name{
-  font:.91rem/1 'Inter',sans-serif;font-weight:700;color:var(--t1);
+  font:.91rem/1 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-weight:700;color:var(--t1);
   display:flex;align-items:center;gap:8px;margin-bottom:9px;
 }
-.rp-tool__desc{font:.83rem/1.55 'Inter',sans-serif;color:var(--t3);}
+.rp-tool__desc{font:.83rem/1.55 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--t3);}
 .rp-tool__ctas{display:flex;flex-direction:column;gap:6px;flex-shrink:0;}
 
 /* -- FINAL CTA ------------------------------------------ */
@@ -282,13 +258,13 @@ html,body{
 }
 .rp-cta__inner{display:flex;flex-direction:column;align-items:center;gap:20px;}
 .rp-cta__h2{
-  font:800 clamp(2rem,4.5vw,3.1rem)/1.09 'Inter',sans-serif;
+  font:800 clamp(2rem,4.5vw,3.1rem)/1.09 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   color:var(--t1);letter-spacing:-.025em;
 }
-.rp-cta__sub{font:.96rem/1.7 'Inter',sans-serif;color:var(--t3);}
+.rp-cta__sub{font:.96rem/1.7 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--t3);}
 .rp-cta__meta{
   display:flex;align-items:center;gap:12px;margin-top:4px;
-  font:.81rem 'Inter',sans-serif;color:var(--t3);
+  font:.81rem system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--t3);
 }
 .rp-cta__meta a{color:var(--t3);text-decoration:none;transition:color .15s;}
 .rp-cta__meta a:hover{color:var(--t1);}
@@ -300,7 +276,6 @@ html,body{
   .rp-tools{grid-template-columns:1fr;}
 }
 @media(max-width:720px){
-  .rp-nav__links a:not(.btn){display:none;}
   .rp-hero{padding:100px 0 64px;}
   .rp-s{padding:64px 0;}
   .rp-cta{padding:80px 0;}
@@ -317,25 +292,6 @@ html,body{
 </head>
 <body>
 <div class="rp-wrap">
-
-  <!-- NAV -->
-  <nav class="rp-nav">
-    <div class="rp-c rp-nav__inner">
-      <a class="rp-nav__brand" href="https://replanta.net">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <circle cx="9" cy="9" r="8" stroke="#4ade80" stroke-width="1.4"/>
-          <path d="M9 13V8M9 8C9 8 7 6.5 5 7M9 8C9 8 11 6.5 13 7" stroke="#4ade80" stroke-width="1.4" stroke-linecap="round"/>
-        </svg>
-        Replanta
-      </a>
-      <div class="rp-nav__links">
-        <a href="#sap">SAP Woo Suite</a>
-        <a href="#care">Care</a>
-        <a href="#free">Open source</a>
-        <a class="btn btn--nav" href="https://replanta.net/contacto">Contactar</a>
-      </div>
-    </div>
-  </nav>
 
   <!-- HERO -->
   <section class="rp-hero">
@@ -396,7 +352,7 @@ html,body{
         <div class="rp-split__copy">
           <span class="rp-s__eye">SAP Business One + WooCommerce</span>
           <h2 class="rp-s__h2">El puente entre<br>tu ERP y tu tienda</h2>
-          <p style="font:.93rem/1.7 'Inter',sans-serif;color:var(--t3)">
+          <p style="font:.93rem/1.7 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--t3)">
             Pedidos, stock, clientes y precios sincronizados en tiempo real entre SAP B1 y WooCommerce.
             Sin exportaciones manuales. Sin cuadrar a fin de mes.
           </p>
@@ -526,7 +482,7 @@ html,body{
           <span>Backups cada 12h &middot; Staging obligatorio pre&#x2011;update &middot; Monitorizaci&oacute;n checkout &middot; SLA checkout 30 min</span>
         </div>
         <div style="display:flex;align-items:center;gap:16px;flex-shrink:0;">
-          <div style="font:800 1.4rem/1 'Inter',sans-serif;color:var(--t1);">+35<span style="font:500 .85rem/1 'Inter',sans-serif;color:var(--t3);">&euro;/mes</span></div>
+          <div style="font:800 1.4rem/1 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--t1);">+35<span style="font:500 .85rem/1 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--t3);">&euro;/mes</span></div>
           <a class="btn btn--ghost btn--sm" href="https://replanta.net/mantenimiento-wordpress/#planes">Detalles</a>
         </div>
       </div>
