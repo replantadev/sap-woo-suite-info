@@ -66,7 +66,7 @@ html,body{
 .chip--green{border-color:rgba(74,222,128,.25);background:rgba(74,222,128,.07);color:#86efac;}
 .chip--sm{padding:2px 8px;font-size:.69rem;}
 
-/* -- NAV: omitted — provided by Astra on WordPress --------- */
+/* -- NAV: omitted â€” provided by Astra on WordPress --------- */
 
 /* -- HERO ----------------------------------------------- */
 .rp-hero{
@@ -172,6 +172,43 @@ html,body{
 .rp-ficha__row span{color:var(--t3);}
 .rp-ficha__row strong{color:var(--t2);font-weight:600;}
 
+/* -- SAP: COMO FUNCIONA + IMAGE ------------------------- */
+.rp-how{
+  display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
+  margin-top:56px;padding-top:48px;border-top:1px solid var(--border);
+}
+.rp-how__label{
+  font:.71rem/1 system-ui,sans-serif;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:24px;
+}
+.rp-how__steps{display:flex;flex-direction:column;gap:24px;}
+.rp-how__step{
+  display:flex;align-items:flex-start;gap:14px;
+  font:.86rem/1.55 system-ui,sans-serif;color:var(--t3);
+}
+.rp-how__step strong{display:block;color:var(--t1);font-weight:600;margin-bottom:4px;}
+.rp-how__step p{margin:0;}
+.rp-how__num{
+  width:28px;height:28px;border-radius:50%;flex-shrink:0;
+  background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.25);
+  color:var(--accent);font:.75rem/28px system-ui,sans-serif;font-weight:700;
+  text-align:center;
+}
+.rp-how__visual img{
+  width:100%;border-radius:12px;border:1px solid var(--border);
+  display:block;
+}
+
+/* -- CARE: INTEGRATIONS ---------------------------------- */
+.rp-care__integ{
+  display:flex;align-items:center;flex-wrap:wrap;gap:8px;
+  margin-top:20px;padding-top:20px;border-top:1px solid var(--border);
+}
+.rp-care__integLabel{
+  font:.75rem/1 system-ui,sans-serif;color:var(--t3);font-weight:500;
+  margin-right:2px;
+}
+
 /* -- CARE PLANS ----------------------------------------- */
 .rp-plans{
   display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
@@ -272,6 +309,8 @@ html,body{
 /* -- RESPONSIVE ----------------------------------------- */
 @media(max-width:920px){
   .rp-split{grid-template-columns:1fr;gap:48px;}
+  .rp-how{grid-template-columns:1fr;gap:32px;}
+  .rp-how__visual{order:-1;}
   .rp-plans{grid-template-columns:1fr;max-width:440px;margin-inline:auto;}
   .rp-tools{grid-template-columns:1fr;}
 }
@@ -402,6 +441,37 @@ html,body{
           </div>
         </div>
       </div>
+
+      <!-- Como funciona + dashboard -->
+      <div class="rp-how">
+        <div class="rp-how__steps">
+          <div class="rp-how__label">C&oacute;mo funciona</div>
+          <div class="rp-how__step">
+            <div class="rp-how__num">1</div>
+            <div>
+              <strong>El pedido entra en WooCommerce</strong>
+              <p>El cliente completa la compra. El plugin lo captura v&iacute;a hook de WooCommerce antes de que llegue a ning&uacute;n proceso manual.</p>
+            </div>
+          </div>
+          <div class="rp-how__step">
+            <div class="rp-how__num">2</div>
+            <div>
+              <strong>Suite lo traduce al lenguaje de SAP</strong>
+              <p>Crea el documento SAP correspondiente (SO, IN o QT), asigna el Business Partner, aplica la tarifa y el almac&eacute;n seg&uacute;n configuraci&oacute;n.</p>
+            </div>
+          </div>
+          <div class="rp-how__step">
+            <div class="rp-how__num">3</div>
+            <div>
+              <strong>ERP y tienda quedan en sync</strong>
+              <p>Stock actualizado en ambos sentidos. Cola de reintentos autom&aacute;tica si SAP no responde. Logs completos desde WP admin.</p>
+            </div>
+          </div>
+        </div>
+        <div class="rp-how__visual">
+          <img src="https://replanta.net/wp-content/uploads/2026/06/dashboard.png" alt="Panel de control SAP Woo Suite" loading="lazy">
+        </div>
+      </div>
     </div>
   </section>
 
@@ -412,7 +482,7 @@ html,body{
         <span class="rp-s__eye">Mantenimiento WordPress &middot; instalaci&oacute;n incluida</span>
         <h2 class="rp-s__h2">Tu WordPress en manos de alguien<br>que responde cuando falla</h2>
         <p class="rp-s__desc">
-          Mantenimiento autom&aacute;tico WordPress &middot; v1.12.2 &middot; Estable<br>
+          Mantenimiento autom&aacute;tico WordPress &middot; v1.13.0 &middot; Estable<br>
           Actualizaciones con backup y rollback, monitorizaci&oacute;n 24/7 y reportes en lenguaje humano.
         </p>
       </div>
@@ -426,7 +496,7 @@ html,body{
           </div>
           <ul class="rp-plan__feats">
             <li>Actualizaciones mensuales + backup previo</li>
-            <li>Copias semanales externas (Backuply)</li>
+            <li>Copias semanales externas</li>
             <li>Optimizaci&oacute;n WPO b&aacute;sica</li>
             <li>Reporte mensual al cliente</li>
             <li>Soporte email en horario laboral</li>
@@ -487,7 +557,16 @@ html,body{
         </div>
       </div>
 
-      <div style="display:flex;gap:12px;justify-content:center;margin-top:36px;">
+      <div class="rp-care__integ">
+        <span class="rp-care__integLabel">Integra con</span>
+        <span class="chip chip--sm">Cloudflare</span>
+        <span class="chip chip--sm">Google Analytics</span>
+        <span class="chip chip--sm">Search Console</span>
+        <span class="chip chip--sm">Claude AI</span>
+        <span class="chip chip--sm">Action Scheduler</span>
+      </div>
+
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:28px;">
         <a class="btn btn--accent" href="https://replanta.net/contacto">Solicitar informaci&oacute;n</a>
         <a class="btn btn--ghost" href="https://replantadev.github.io/care-docs/">Documentaci&oacute;n</a>
       </div>
