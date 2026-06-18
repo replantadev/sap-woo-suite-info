@@ -16,16 +16,25 @@ html,body{
   -webkit-font-smoothing:antialiased;
 }
 
-/* -- TOKENS --------------------------------------------- */
+/* -- REP DESIGN SYSTEM: variable fallbacks for GitHub Pages -- */
 :root{
+  --rep-forest:#1E2F23;
+  --rep-teal:#41999F;
+  --rep-sun:#F7D450;
+  --rep-green:#93F1C9;
+  --rep-font-display:'Sora',system-ui,sans-serif;
+  --rep-font-body:'Inter',system-ui,sans-serif;
+  --rep-radius-sm:8px;
+  --rep-radius-md:12px;
+  --rep-radius-lg:16px;
+  --rep-radius-xl:24px;
+  /* page-local dark tokens */
   --bg0:#0b1a10;
   --bg1:#0f2016;
   --bg2:#142a1c;
   --surface:rgba(255,255,255,.04);
   --border:rgba(255,255,255,.08);
   --border-hi:rgba(255,255,255,.16);
-  --accent:#4ade80;
-  --teal:#2dd4bf;
   --red:#f87171;
   --t1:#f0fdf4;
   --t2:rgba(240,253,244,.72);
@@ -33,46 +42,46 @@ html,body{
   --r:14px;
 }
 
-/* -- LAYOUT --------------------------------------------- */
+/* -- LAYOUT -- */
 .rp-wrap{color:var(--t2);line-height:1.6;background:var(--bg0);}
 .rp-c{max-width:1120px;margin:0 auto;padding:0 24px;}
 
-/* -- BUTTONS -------------------------------------------- */
-.btn{
+/* -- BUTTONS: fallbacks (global.css overrides on WP) -- */
+.rep-btn-primary,.rep-btn-accent,.rep-btn-secondary,.btn-ghost{
   display:inline-flex;align-items:center;gap:6px;
-  padding:10px 20px;border-radius:9px;
+  padding:10px 22px;border-radius:var(--rep-radius-md);
   font:600 .88rem/1 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   text-decoration:none;border:none;cursor:pointer;
   transition:all .18s;white-space:nowrap;
 }
-.btn--accent{background:var(--accent);color:#0b1a10;}
-.btn--accent:hover{background:#86efac;transform:translateY(-1px);}
-.btn--ghost{background:transparent;color:var(--t2);border:1px solid var(--border);}
-.btn--ghost:hover{border-color:var(--border-hi);color:var(--t1);background:var(--surface);}
-.btn--nav{background:var(--surface);color:var(--t1);border:1px solid var(--border);padding:7px 16px;font-size:.82rem;}
-.btn--nav:hover{background:var(--border);}
-.btn--lg{padding:14px 30px;font-size:.96rem;border-radius:11px;}
-.btn--sm{padding:7px 14px;font-size:.8rem;}
+.rep-btn-primary{background:var(--rep-teal);color:#fff;}
+.rep-btn-primary:hover{filter:brightness(1.12);transform:translateY(-1px);}
+.rep-btn-accent{background:var(--rep-sun);color:var(--rep-forest);}
+.rep-btn-accent:hover{filter:brightness(1.06);transform:translateY(-1px);}
+.btn-ghost{background:transparent;color:var(--t1);border:1px solid var(--border-hi);}
+.btn-ghost:hover{background:var(--surface);}
+.rp-btn-lg{padding:14px 30px;font-size:.96rem;border-radius:11px;}
+.rp-btn-sm{padding:7px 14px;font-size:.8rem;}
 
-/* -- CHIPS ---------------------------------------------- */
-.chip{
+/* -- CHIPS: fallbacks (global.css overrides on WP) -- */
+.rep-chip{
   display:inline-flex;align-items:center;
-  padding:4px 10px;border-radius:20px;
+  padding:4px 11px;border-radius:20px;
   font:.71rem/1 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-weight:600;letter-spacing:.05em;
   border:1px solid var(--border);background:var(--surface);color:var(--t3);
 }
-.chip--glow{border-color:rgba(74,222,128,.3);background:rgba(74,222,128,.08);color:var(--accent);}
-.chip--teal{border-color:rgba(45,212,191,.3);background:rgba(45,212,191,.07);color:var(--teal);}
-.chip--green{border-color:rgba(74,222,128,.25);background:rgba(74,222,128,.07);color:#86efac;}
-.chip--sm{padding:2px 8px;font-size:.69rem;}
+.rep-chip--green{border-color:rgba(147,241,201,.3);background:rgba(147,241,201,.08);color:var(--rep-green);}
+.rep-chip--teal{border-color:rgba(65,153,159,.3);background:rgba(65,153,159,.07);color:var(--rep-teal);}
+.rep-chip--sun{border-color:rgba(247,212,80,.3);background:rgba(247,212,80,.07);color:var(--rep-sun);}
+.rp-chip-sm{padding:2px 8px;font-size:.69rem;}
 
-/* -- NAV: omitted â€” provided by Astra on WordPress --------- */
+/* -- NAV: omitted -- provided by Astra on WordPress -- */
 
-/* -- HERO ----------------------------------------------- */
+/* -- HERO -- */
 .rp-hero{
   padding:136px 0 88px;
   position:relative;overflow:hidden;
-  background:radial-gradient(80% 55% at 50% -5%,rgba(74,222,128,.13),transparent 65%),
+  background:radial-gradient(80% 55% at 50% -5%,rgba(65,153,159,.14),transparent 65%),
              linear-gradient(175deg,var(--bg0) 0%,var(--bg1) 100%);
 }
 .rp-hero__grid{
@@ -91,7 +100,7 @@ html,body{
   font:900 clamp(2.5rem,6.5vw,4.2rem)/1.06 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   color:var(--t1);letter-spacing:-.03em;max-width:800px;
 }
-.rp-hero__h1 em{font-style:normal;color:var(--accent);}
+.rp-hero__h1 em{font-style:normal;color:var(--rep-teal);}
 .rp-hero__sub{
   font:.96rem/1.75 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--t3);
   max-width:560px;
@@ -114,7 +123,7 @@ html,body{
 .rp-hero__pname{font:.88rem/1 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-weight:700;color:var(--t1);}
 .rp-hero__ptag{font:.73rem/1 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--t3);margin-top:3px;}
 
-/* -- SECTION BASE --------------------------------------- */
+/* -- SECTION BASE -- */
 .rp-s{padding:96px 0;}
 .rp-s--alt{background:var(--bg1);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
 .rp-s__head{text-align:center;margin-bottom:56px;}
@@ -122,7 +131,7 @@ html,body{
   display:block;
   font:.73rem/1 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-weight:700;
   letter-spacing:.09em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:14px;
+  color:var(--rep-teal);margin-bottom:14px;
 }
 .rp-s__h2{
   font:800 clamp(2rem,4vw,2.9rem)/1.08 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
@@ -134,7 +143,7 @@ html,body{
 }
 .rp-s__ctas{display:flex;gap:12px;flex-wrap:wrap;}
 
-/* -- SAP SPLIT ------------------------------------------ */
+/* -- SAP SPLIT -- */
 .rp-split{
   display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;
 }
@@ -160,7 +169,7 @@ html,body{
 }
 .rp-feat:hover{background:rgba(255,255,255,.06);}
 .rp-feat strong{display:block;color:var(--t1);font-weight:600;margin-bottom:2px;}
-.rp-feat__i{font-size:1rem;flex-shrink:0;width:22px;text-align:center;margin-top:2px;}
+.rp-feat__i{font-size:1rem;flex-shrink:0;width:22px;text-align:center;margin-top:2px;color:var(--rep-teal);}
 
 .rp-ficha{border:1px solid var(--border);border-radius:11px;overflow:hidden;}
 .rp-ficha__row{
@@ -172,14 +181,14 @@ html,body{
 .rp-ficha__row span{color:var(--t3);}
 .rp-ficha__row strong{color:var(--t2);font-weight:600;}
 
-/* -- SAP: COMO FUNCIONA + IMAGE ------------------------- */
+/* -- SAP: COMO FUNCIONA + IMAGE -- */
 .rp-how{
   display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
   margin-top:56px;padding-top:48px;border-top:1px solid var(--border);
 }
 .rp-how__label{
   font:.71rem/1 system-ui,sans-serif;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:24px;
+  color:var(--rep-teal);margin-bottom:24px;
 }
 .rp-how__steps{display:flex;flex-direction:column;gap:24px;}
 .rp-how__step{
@@ -190,8 +199,8 @@ html,body{
 .rp-how__step p{margin:0;}
 .rp-how__num{
   width:28px;height:28px;border-radius:50%;flex-shrink:0;
-  background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.25);
-  color:var(--accent);font:.75rem/28px system-ui,sans-serif;font-weight:700;
+  background:rgba(65,153,159,.12);border:1px solid rgba(65,153,159,.25);
+  color:var(--rep-teal);font:.75rem/28px system-ui,sans-serif;font-weight:700;
   text-align:center;
 }
 .rp-how__visual img{
@@ -199,7 +208,7 @@ html,body{
   display:block;
 }
 
-/* -- CARE: INTEGRATIONS ---------------------------------- */
+/* -- CARE: INTEGRATIONS -- */
 .rp-care__integ{
   display:flex;align-items:center;flex-wrap:wrap;gap:8px;
   margin-top:20px;padding-top:20px;border-top:1px solid var(--border);
@@ -209,7 +218,7 @@ html,body{
   margin-right:2px;
 }
 
-/* -- CARE PLANS ----------------------------------------- */
+/* -- CARE PLANS -- */
 .rp-plans{
   display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
   align-items:start;margin-bottom:16px;
@@ -221,17 +230,17 @@ html,body{
   position:relative;
 }
 .rp-plan--hi{
-  border-color:rgba(74,222,128,.4);
-  background:rgba(74,222,128,.05);
-  box-shadow:0 0 40px rgba(74,222,128,.07);
+  border-color:rgba(65,153,159,.4);
+  background:rgba(65,153,159,.05);
+  box-shadow:0 0 40px rgba(65,153,159,.07);
 }
 .rp-plan__badge{
   position:absolute;top:-12px;left:50%;transform:translateX(-50%);
-  background:var(--accent);color:#0b1a10;
+  background:var(--rep-teal);color:#fff;
   font:.67rem/1 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-weight:800;letter-spacing:.07em;text-transform:uppercase;
   padding:4px 13px;border-radius:20px;white-space:nowrap;
 }
-.rp-plan__name{font:700 1rem/1 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--accent);}
+.rp-plan__name{font:700 1rem/1 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--rep-teal);}
 .rp-plan__price{font:800 2rem/1 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--t1);margin-top:6px;}
 .rp-plan__price span{font:500 .88rem/1 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--t3);}
 .rp-plan__sub{font:.79rem/1.3 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--t3);margin-top:3px;}
@@ -242,7 +251,7 @@ html,body{
 }
 .rp-plan__feats li::before{
   content:"\2713";position:absolute;left:0;top:0;
-  color:var(--accent);font-weight:700;font-size:.76rem;
+  color:var(--rep-teal);font-weight:700;font-size:.76rem;
 }
 .rp-plan__addon{
   font:.76rem/1.3 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--t3);
@@ -253,8 +262,8 @@ html,body{
 
 .rp-addon{
   display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
-  border:1px solid rgba(45,212,191,.2);border-radius:13px;
-  padding:18px 22px;background:rgba(45,212,191,.04);
+  border:1px solid rgba(65,153,159,.2);border-radius:13px;
+  padding:18px 22px;background:rgba(65,153,159,.04);
 }
 .rp-addon__info{
   display:flex;align-items:center;flex-wrap:wrap;gap:10px;
@@ -262,7 +271,7 @@ html,body{
 }
 .rp-addon__info strong{color:var(--t1);font-weight:700;}
 
-/* -- FREE TOOLS ----------------------------------------- */
+/* -- FREE TOOLS -- */
 .rp-tools{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 .rp-tool{
   display:flex;align-items:flex-start;gap:16px;
@@ -285,10 +294,10 @@ html,body{
 .rp-tool__desc{font:.83rem/1.55 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--t3);}
 .rp-tool__ctas{display:flex;flex-direction:column;gap:6px;flex-shrink:0;}
 
-/* -- FINAL CTA ------------------------------------------ */
+/* -- FINAL CTA -- */
 .rp-cta{
   padding:120px 0;
-  background:radial-gradient(60% 70% at 50% 110%,rgba(74,222,128,.11),transparent 65%),
+  background:radial-gradient(60% 70% at 50% 110%,rgba(65,153,159,.11),transparent 65%),
              var(--bg0);
   text-align:center;
   border-top:1px solid var(--border);
@@ -306,7 +315,7 @@ html,body{
 .rp-cta__meta a{color:var(--t3);text-decoration:none;transition:color .15s;}
 .rp-cta__meta a:hover{color:var(--t1);}
 
-/* -- RESPONSIVE ----------------------------------------- */
+/* -- RESPONSIVE -- */
 @media(max-width:920px){
   .rp-split{grid-template-columns:1fr;gap:48px;}
   .rp-how{grid-template-columns:1fr;gap:32px;}
@@ -337,22 +346,22 @@ html,body{
     <div class="rp-hero__grid" aria-hidden="true"></div>
     <div class="rp-c">
       <div class="rp-hero__inner">
-        <span class="chip chip--glow">4 plugins activos &nbsp;&middot;&nbsp; 20+ releases publicados</span>
+        <span class="rep-chip rep-chip--teal">4 plugins activos &nbsp;&middot;&nbsp; 20+ releases publicados</span>
         <h1 class="rp-hero__h1">
-          Software WordPress<br>
-          <em>que se comporta como enterprise</em>
+          Plugins WordPress<br>
+          <em>para entornos exigentes</em>
         </h1>
         <p class="rp-hero__sub">
           Integraci&oacute;n SAP Business One, mantenimiento automatizado y herramientas open source.
           Desarrollado por Replanta para entornos donde fallar no es una opci&oacute;n.
         </p>
         <div class="rp-hero__ctas">
-          <a class="btn btn--accent btn--lg" href="https://replanta.net/contacto">Hablar con un experto</a>
-          <a class="btn btn--ghost btn--lg" href="#sap">Ver plugins &darr;</a>
+          <a class="rep-btn-primary rp-btn-lg" href="https://replanta.net/contacto">Hablar con un experto</a>
+          <a class="btn-ghost rp-btn-lg" href="#sap">Ver plugins &darr;</a>
         </div>
         <div class="rp-hero__plugins">
           <a class="rp-hero__plugin" href="#sap">
-            <img src="https://replanta.net/wp-content/uploads/2024/02/sapwoosuite.png" alt="SAP Woo Suite" loading="eager">
+            <img src="https://replanta.net/wp-content/uploads/2026/03/sapwoosuite-ico.png" alt="SAP Woo Suite" loading="eager">
             <div>
               <div class="rp-hero__pname">SAP Woo Suite</div>
               <div class="rp-hero__ptag">ERP &middot; Premium</div>
@@ -401,34 +410,34 @@ html,body{
             <li><span class="rp-pain__x">&times;</span> Precios distintos entre web y SAP &rarr; p&eacute;rdida de margen</li>
           </ul>
           <div class="rp-s__ctas">
-            <a class="btn btn--accent" href="https://replantadev.github.io/sap-woo-suite-info/">Documentaci&oacute;n</a>
-            <a class="btn btn--ghost" href="https://replanta.net/contacto">Solicitar demo</a>
+            <a class="rep-btn-primary" href="https://replantadev.github.io/sap-woo-suite-info/">Documentaci&oacute;n</a>
+            <a class="btn-ghost" href="https://replanta.net/contacto">Solicitar demo</a>
           </div>
         </div>
         <div>
           <div class="rp-feat-grid">
             <div class="rp-feat">
-              <div class="rp-feat__i">&#8644;</div>
+              <div class="rp-feat__i"><i class="ph ph-arrows-left-right"></i></div>
               <div><strong>Sincronizaci&oacute;n bidireccional</strong>Pedidos WC&rarr;SAP y stock SAP&rarr;WC en tiempo real</div>
             </div>
             <div class="rp-feat">
-              <div class="rp-feat__i">&#127970;</div>
+              <div class="rp-feat__i"><i class="ph ph-buildings"></i></div>
               <div><strong>B2B completo</strong>Tarifas, socios de negocio y condiciones por cliente</div>
             </div>
             <div class="rp-feat">
-              <div class="rp-feat__i">&#128230;</div>
+              <div class="rp-feat__i"><i class="ph ph-package"></i></div>
               <div><strong>Cat&aacute;logo desde SAP</strong>Art&iacute;culos, precios y grupos sincronizados del ERP</div>
             </div>
             <div class="rp-feat">
-              <div class="rp-feat__i">&#128274;</div>
+              <div class="rp-feat__i"><i class="ph ph-lock-simple"></i></div>
               <div><strong>Cifrado AES&#x2011;256&#x2011;CBC</strong>Credenciales SAP con IV aleatorio por instalaci&oacute;n</div>
             </div>
             <div class="rp-feat">
-              <div class="rp-feat__i">&#8635;</div>
+              <div class="rp-feat__i"><i class="ph ph-arrow-counter-clockwise"></i></div>
               <div><strong>Cola de reintentos</strong>Pedidos fallidos reprocesados sin intervenci&oacute;n</div>
             </div>
             <div class="rp-feat">
-              <div class="rp-feat__i">&#128202;</div>
+              <div class="rp-feat__i"><i class="ph ph-chart-bar"></i></div>
               <div><strong>Panel de control</strong>Estado de sync, errores y logs desde WP admin</div>
             </div>
           </div>
@@ -482,7 +491,7 @@ html,body{
         <span class="rp-s__eye">Mantenimiento WordPress &middot; instalaci&oacute;n incluida</span>
         <h2 class="rp-s__h2">Tu WordPress en manos de alguien<br>que responde cuando falla</h2>
         <p class="rp-s__desc">
-          Mantenimiento autom&aacute;tico WordPress &middot; v1.13.0 &middot; Estable<br>
+          Mantenimiento autom&aacute;tico WordPress &middot; v2.19.3 &middot; estable<br>
           Actualizaciones con backup y rollback, monitorizaci&oacute;n 24/7 y reportes en lenguaje humano.
         </p>
       </div>
@@ -502,7 +511,7 @@ html,body{
             <li>Soporte email en horario laboral</li>
           </ul>
           <div class="rp-plan__addon">+ Impulso Ecommerce <strong>+35&euro;/mes</strong></div>
-          <a class="btn btn--ghost rp-plan__cta" href="https://replanta.net/mantenimiento-wordpress/#planes">Ver plan completo</a>
+          <a class="btn-ghost rp-plan__cta" href="https://replanta.net/mantenimiento-wordpress/#planes">Ver plan completo</a>
         </div>
 
         <div class="rp-plan rp-plan--hi">
@@ -522,7 +531,7 @@ html,body{
             <li>SLA 24h / cr&iacute;ticos 4h</li>
           </ul>
           <div class="rp-plan__addon">+ Impulso Ecommerce <strong>+35&euro;/mes</strong></div>
-          <a class="btn btn--accent rp-plan__cta" href="https://replanta.net/mantenimiento-wordpress/#planes">Empezar con Ra&iacute;z</a>
+          <a class="rep-btn-primary rp-plan__cta" href="https://replanta.net/mantenimiento-wordpress/#planes">Empezar con Ra&iacute;z</a>
         </div>
 
         <div class="rp-plan">
@@ -541,34 +550,34 @@ html,body{
             <li>SLA 8h / cr&iacute;ticos 2h</li>
           </ul>
           <div class="rp-plan__addon">+ Impulso Ecommerce <strong>+35&euro;/mes</strong></div>
-          <a class="btn btn--ghost rp-plan__cta" href="https://replanta.net/mantenimiento-wordpress/#planes">Ver plan completo</a>
+          <a class="btn-ghost rp-plan__cta" href="https://replanta.net/mantenimiento-wordpress/#planes">Ver plan completo</a>
         </div>
       </div>
 
       <div class="rp-addon">
         <div class="rp-addon__info">
-          <span class="chip chip--teal">Add&#x2011;on &middot; WooCommerce</span>
+          <span class="rep-chip rep-chip--teal">Add&#x2011;on &middot; WooCommerce</span>
           <strong>Impulso Ecommerce</strong>
           <span>Backups cada 12h &middot; Staging obligatorio pre&#x2011;update &middot; Monitorizaci&oacute;n checkout &middot; SLA checkout 30 min</span>
         </div>
         <div style="display:flex;align-items:center;gap:16px;flex-shrink:0;">
           <div style="font:800 1.4rem/1 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--t1);">+35<span style="font:500 .85rem/1 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--t3);">&euro;/mes</span></div>
-          <a class="btn btn--ghost btn--sm" href="https://replanta.net/mantenimiento-wordpress/#planes">Detalles</a>
+          <a class="btn-ghost rp-btn-sm" href="https://replanta.net/mantenimiento-wordpress/#planes">Detalles</a>
         </div>
       </div>
 
       <div class="rp-care__integ">
         <span class="rp-care__integLabel">Integra con</span>
-        <span class="chip chip--sm">Cloudflare</span>
-        <span class="chip chip--sm">Google Analytics</span>
-        <span class="chip chip--sm">Search Console</span>
-        <span class="chip chip--sm">Claude AI</span>
-        <span class="chip chip--sm">Action Scheduler</span>
+        <span class="rep-chip rp-chip-sm">Cloudflare</span>
+        <span class="rep-chip rp-chip-sm">Google Analytics</span>
+        <span class="rep-chip rp-chip-sm">Search Console</span>
+        <span class="rep-chip rp-chip-sm">Claude AI</span>
+        <span class="rep-chip rp-chip-sm">Action Scheduler</span>
       </div>
 
       <div style="display:flex;gap:12px;justify-content:center;margin-top:28px;">
-        <a class="btn btn--accent" href="https://replanta.net/contacto">Solicitar informaci&oacute;n</a>
-        <a class="btn btn--ghost" href="https://replantadev.github.io/care-docs/">Documentaci&oacute;n</a>
+        <a class="rep-btn-primary" href="https://replanta.net/contacto">Solicitar informaci&oacute;n</a>
+        <a class="btn-ghost" href="https://replantadev.github.io/care-docs/">Documentaci&oacute;n</a>
       </div>
 
       <span class="sv" style="display:none">1.12.2 &middot; estable</span>
@@ -579,7 +588,7 @@ html,body{
   <section id="free" class="rp-s rp-s--alt">
     <div class="rp-c">
       <div class="rp-s__head">
-        <span class="chip chip--green">Open source &middot; GPL</span>
+        <span class="rep-chip rep-chip--green">Open source &middot; GPL</span>
         <h2 class="rp-s__h2" style="margin-top:14px">Descarga libre, sin cuotas</h2>
         <p class="rp-s__desc">C&oacute;digo en GitHub, changelog real por versi&oacute;n. Issues abiertos.</p>
       </div>
@@ -587,23 +596,23 @@ html,body{
         <div class="rp-tool">
           <img class="rp-tool__icon" src="https://replanta.net/wp-content/uploads/2025/09/dniwooicon.png" alt="DNIWOO" loading="lazy">
           <div class="rp-tool__body">
-            <div class="rp-tool__name">DNIWOO <span class="chip chip--sm">v1.4.2</span></div>
+            <div class="rp-tool__name">DNIWOO <span class="rep-chip rp-chip-sm">v1.4.2</span></div>
             <p class="rp-tool__desc">Validaci&oacute;n de DNI/NIF/NIE/CIF en tiempo real en WooCommerce checkout. Sin configuraci&oacute;n adicional. Compatible con HPOS.</p>
           </div>
           <div class="rp-tool__ctas">
-            <a class="btn btn--ghost btn--sm" href="https://github.com/replantadev/dniwoo/releases">ZIP</a>
-            <a class="btn btn--ghost btn--sm" href="https://github.com/replantadev/dniwoo">GitHub</a>
+            <a class="btn-ghost rp-btn-sm" href="https://github.com/replantadev/dniwoo/releases">ZIP</a>
+            <a class="btn-ghost rp-btn-sm" href="https://github.com/replantadev/dniwoo">GitHub</a>
           </div>
         </div>
         <div class="rp-tool">
           <img class="rp-tool__icon rp-tool__icon--pad" src="https://replanta.net/wp-content/uploads/2024/02/treec2.svg" alt="Sello Replanta" loading="lazy">
           <div class="rp-tool__body">
-            <div class="rp-tool__name">Sello Replanta <span class="chip chip--sm">v2.0.7</span></div>
+            <div class="rp-tool__name">Sello Replanta <span class="rep-chip rp-chip-sm">v2.0.7</span></div>
             <p class="rp-tool__desc">Widget Carbon Negative para hosting Replanta. Detecci&oacute;n autom&aacute;tica del entorno &mdash; solo muestra el sello si el sitio corre sobre la infraestructura de Replanta.</p>
           </div>
           <div class="rp-tool__ctas">
-            <a class="btn btn--ghost btn--sm" href="https://github.com/replantadev/selloreplanta/releases">ZIP</a>
-            <a class="btn btn--ghost btn--sm" href="https://github.com/replantadev/selloreplanta">GitHub</a>
+            <a class="btn-ghost rp-btn-sm" href="https://github.com/replantadev/selloreplanta/releases">ZIP</a>
+            <a class="btn-ghost rp-btn-sm" href="https://github.com/replantadev/selloreplanta">GitHub</a>
           </div>
         </div>
       </div>
@@ -621,7 +630,7 @@ html,body{
           Cu&eacute;ntanos qu&eacute; est&aacute;s construyendo.<br>
           Normalmente respondemos el mismo d&iacute;a.
         </p>
-        <a class="btn btn--accent btn--lg" href="https://replanta.net/contacto">Hablar con Replanta &rarr;</a>
+        <a class="rep-btn-primary rp-btn-lg" href="https://replanta.net/contacto">Hablar con Replanta &rarr;</a>
         <div class="rp-cta__meta">
           <a href="https://github.com/replantadev">GitHub</a>
           <span>&middot;</span>
