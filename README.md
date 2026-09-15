@@ -14,7 +14,7 @@
   <img src="https://img.shields.io/badge/versi%C3%B3n-2.22.28-blue" alt="Versión">
   <img src="https://img.shields.io/badge/WooCommerce-6.0%2B-purple" alt="WooCommerce">
   <img src="https://img.shields.io/badge/SAP%20B1-9.3%20%7C%2010.0-orange" alt="SAP B1">
-  <img src="https://img.shields.io/badge/PHP-7.4%2B-777BB4" alt="PHP">
+  <img src="https://img.shields.io/badge/PHP-8.1%2B-777BB4" alt="PHP">
   <img src="https://img.shields.io/badge/HPOS-compatible-brightgreen" alt="HPOS">
   <img src="https://img.shields.io/badge/licencia-GPLv2-green" alt="Licencia">
 </p>
@@ -83,7 +83,7 @@ Desde la versión 2.0 incorpora una **arquitectura multicanal** con Channel Mana
 - **Dashboard Multicanal**: Vista unificada del estado de SAP y todos los canales conectados
 - **API para Addons**: Interface y clase base para desarrollar integraciones propias
 - **Hooks de extensión**: Los addons reaccionan automáticamente a eventos del core (pedidos enviados, productos importados, stock actualizado...)
-- **Compatibilidad HPOS**: Preparado para WooCommerce 9.x con High-Performance Order Storage
+- **Compatibilidad HPOS**: Preparado para High-Performance Order Storage (probado hasta WooCommerce 11.0.1)
 
 ### Logs y Diagnóstico
 - Logs detallados de cada operación
@@ -132,8 +132,8 @@ Desde la versión 2.0 incorpora una **arquitectura multicanal** con Channel Mana
 
 ### WordPress / WooCommerce
 - WordPress 5.8+
-- WooCommerce 6.0+ (compatible con WooCommerce 9.x y HPOS)
-- PHP 7.4+ (recomendado 8.0+)
+- WooCommerce 6.0+ (probado hasta 11.0.1, compatible con HPOS)
+- PHP 8.1+
 
 ### SAP Business One
 - SAP Business One 9.3 PL14+ o 10.0+
@@ -165,7 +165,7 @@ add_action('sapwc_loaded', function () {
 
 | Hook | Tipo | Descripción |
 |------|------|-------------|
-| `sapwc_loaded` | action | Plugin cargado — momento de registrar canales |
+| `sapwc_loaded` | action | Plugin cargado: momento de registrar canales |
 | `sapwc_admin_menu` | action | Añadir submenús al menú de SAP Woo |
 | `sapwc_order_payload` | filter | Modificar payload del pedido antes de enviar a SAP |
 | `sapwc_before_send_order` | action | Antes de enviar un pedido a SAP |
@@ -178,7 +178,7 @@ add_action('sapwc_loaded', function () {
 | `sapwc_channel_registered` | action | Un canal se ha registrado en el Channel Manager |
 | `sapwc_channel_detectors` | filter | Registrar detectores de canal personalizados |
 | `sapwc_channel_payload` | filter | Modificar payload tras inyectar información de canal |
-| `sapwc_builtin_channels_registered` | action | Canales built-in registrados — punto de extensión |
+| `sapwc_builtin_channels_registered` | action | Canales built-in registrados: punto de extensión |
 
 ---
 
@@ -186,7 +186,7 @@ add_action('sapwc_loaded', function () {
 
 | Versión | Destacado |
 |---------|-----------|
-| **2.15.5** | Vigilante 24/7 — monitorización proactiva con alertas IA en SAP Woo Control Center |
+| **2.15.5** | Vigilante 24/7: monitorización proactiva con alertas IA en SAP Woo Control Center |
 | **2.2.0** | Fix detección Amazon (`_umb_marketplace`), documentación y landing actualizados |
 | **2.1.0** | Channel Detector automático, soporte TikTok Shop oficial, 3 nuevos hooks |
 | **2.0.0** | Arquitectura multicanal, Channel Manager, HPOS, API Client singleton, 11 hooks de extensión |
@@ -196,7 +196,7 @@ add_action('sapwc_loaded', function () {
 
 ---
 
-## SAP Woo Control Center — Vigilante 24/7
+## SAP Woo Control Center: Vigilante 24/7
 
 El **SAP Woo Control Center** es el panel de gestión centralizado que acompaña a SAP Woo Suite. Su módulo **Vigilante** monitoriza de forma proactiva todas las instalaciones conectadas.
 
