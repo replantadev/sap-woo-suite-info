@@ -1,5 +1,5 @@
 ﻿<p align="center">
-  <img src="https://replanta.net/wp-content/uploads/2025/12/icono.png" alt="Replanta" width="100" style="border-radius: 50%; background: #1a1a2e; padding: 10px;">
+  <img src="https://replanta.net/wp-content/uploads/2026/05/cropped-ico-redes.png" alt="Replanta" width="100" style="border-radius: 50%; background: #1a1a2e; padding: 10px;">
 </p>
 
 <h1 align="center">SAP Woo Suite</h1>
